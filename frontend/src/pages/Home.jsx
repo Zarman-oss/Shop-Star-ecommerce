@@ -11,7 +11,10 @@ const Home = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message type="error" message={error?.data?.message || error.error} />
+        <Message
+          type="error"
+          message={error?.data?.message || error.error || 'An error occurred'}
+        />
       ) : (
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between mb-4">

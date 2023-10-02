@@ -24,8 +24,8 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-      console.log('User info:', userInfo); // Add this line
       navigate(redirect);
+      console.log(navigate);
     }
   }, [userInfo, redirect, navigate]);
 
@@ -38,20 +38,15 @@ const LoginScreen = () => {
       return;
     }
     try {
-      console.log('Logging in with email:', email); // Add this line
       const res = await login({ email, password }).unwrap();
-      console.log('Login response:', res); // Add this line
       dispatch(setCredentials({ ...res }));
       navigate(redirect);
     } catch (err) {
-      console.error('Login error:', err); // Add this line
       const errorMessage =
         err?.data?.message || err.error || 'An error occurred.';
       toast.error(errorMessage);
     }
   };
-
-  console.log('Rendering LoginScreen'); // Add this line
 
   return (
     <FormContainer>
