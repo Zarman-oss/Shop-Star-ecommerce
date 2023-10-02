@@ -4,7 +4,7 @@ import generateToken from '../utils/generateToken.js';
 
 // @desc Auth User & get token 
 // @route POST /api/users/login
-// @acees Public
+// @access Public
 
 const authUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
@@ -31,7 +31,7 @@ const authUser = asyncHandler(async (req, res) => {
 
 // @desc Register user 
 // @route POST /api/users
-// @acees Public
+// @access Public
 
 const registerUser = asyncHandler(async (req, res) => {
 
@@ -66,7 +66,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 // @desc Logout user / clear cookie 
 // @route POST /api/users/logout
-// @acees Private
+// @access Private
 
 const logoutUser = asyncHandler(async (req, res) => {
 
@@ -81,7 +81,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 
 // @desc Get user profile 
 // @route Get /api/users/profile
-// @acees Private
+// @access Private
 
 const getUserProfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id);
@@ -102,7 +102,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 
 // @desc Update user profile 
 // @route PUT /api/users/profile
-// @acees Private
+// @access Private
 
 const updateUserProfile = asyncHandler(async (req, res) => {
 
@@ -134,7 +134,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
 // @desc Get users
 // @route GET /api/users
-// @acees Private/Admin
+// @accessPrivate/Admin
 
 const getUsers = asyncHandler(async (req, res) => {
 
@@ -146,7 +146,7 @@ const getUsers = asyncHandler(async (req, res) => {
 
 // @desc Get user by ID
 // @route GET /api/users/:id
-// @acees Private/Admin
+// @access Private/Admin
 
 const getUserById = asyncHandler(async (req, res) => {
 
@@ -157,7 +157,7 @@ const getUserById = asyncHandler(async (req, res) => {
 
 // @desc Delete users
 // @route DELETE /api/users/:id
-// @acees Private/Admin
+// @access Private/Admin
 
 const deleteUser = asyncHandler(async (req, res) => {
 
@@ -168,7 +168,7 @@ const deleteUser = asyncHandler(async (req, res) => {
 
 // @desc Update users
 // @route PUT /api/users
-// @acees Private/Admin
+// @access Private/Admin
 
 const updateUser = asyncHandler(async (req, res) => {
 
