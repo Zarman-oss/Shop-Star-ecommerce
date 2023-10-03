@@ -11,8 +11,8 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [login, { isLoading }] = useLoginMutation();
 
@@ -25,11 +25,12 @@ const LoginScreen = () => {
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
-      console.log(navigate);
+      console.log(`Navigating to: ${navigate(redirect)}`);
     }
   }, [userInfo, redirect, navigate]);
 
   // Submit Button
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -42,9 +43,16 @@ const LoginScreen = () => {
       dispatch(setCredentials({ ...res }));
       navigate(redirect);
     } catch (err) {
-      const errorMessage =
-        err?.data?.message || err.error || 'An error occurred.';
-      toast.error(errorMessage);
+      console.error('Login error:', err);
+
+      if (err?.status === 404) {
+        toast.error('Resource not found. Please check the URL.');
+      } else if (err?.response) {
+        // Handle other types of errors based on the status code or response structure
+        // ...
+      } else {
+        toast.error('An error occurred.');
+      }
     }
   };
 
