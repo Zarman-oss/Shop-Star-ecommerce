@@ -29,7 +29,7 @@ const Header = () => {
           />
         </Link>
 
-        {/* Navbar-left side */}
+        {/* Navbar-right side */}
         <div className="hidden md:flex ms-auto items-center gap-3">
           <Link
             to="/cart"
