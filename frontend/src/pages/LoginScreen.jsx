@@ -33,17 +33,15 @@ const LoginScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    // if (!email && !password) {
-    //   toast.error('Please enter both email and password.');
-    //   return;
-    // }
+    if (!email && !password) {
+      toast.error('Please enter both email and password.');
+      return;
+    }
     try {
       const res = await login({ email, password }).unwrap();
       dispatch(setCredentials({ ...res }));
       navigate(redirect);
     } catch (err) {
-      console.error('Login error:', err);
-
       if (err?.status === 404) {
         toast.error('Resource not found. Please check the URL.');
       } else if (err?.response) {
