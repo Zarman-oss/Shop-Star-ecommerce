@@ -20,6 +20,7 @@ router.route('/').post(registerUser).get(protect, admin, getUsers);
 router.post('/logout', logoutUser);
 
 router.post('/auth', authUser);
+// router.route('/auth').post(authUser);
 
 router
     .route('/profile')
