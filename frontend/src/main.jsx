@@ -17,6 +17,7 @@ import ProductCart from './pages/ProductCart.jsx';
 import LoginScreen from './pages/LoginScreen.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import ShippingPage from './pages/ShippingPage.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,7 +27,10 @@ const router = createBrowserRouter(
       <Route path="/cart" element={<ProductCart />} />
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/shipping" element={<ShippingPage />} />
+
+      <Route path="" element={<PrivateRoute />}>
+        <Route path="/shipping" element={<ShippingPage />} />
+      </Route>
     </Route>
   )
 );
