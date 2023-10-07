@@ -35,7 +35,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
         {step3 ? (
           <Link
             to="/payment"
-            className="nav-link hover:bg-gray-300 hover:text-gray-800 transition duration-300 ease-in-out"
+            className="nav-link hover:bg-gray-300  rounded-md py-1 px-1  hover:text-gray-800 transition duration-300 ease-in-out"
           >
             Payment
           </Link>
@@ -48,7 +48,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
         {step4 ? (
           <Link
             to="/placeorder"
-            className="nav-link hover:bg-gray-300 hover:text-gray-800 transition duration-300 ease-in-out"
+            className="nav-link hover:bg-gray-300  rounded-md py-1 px-1 hover:text-gray-800 transition duration-300 ease-in-out"
           >
             Place Order
           </Link>
