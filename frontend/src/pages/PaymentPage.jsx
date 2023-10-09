@@ -8,7 +8,9 @@ const PaymentPage = () => {
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 step3 />
-      <h1>Payment Method</h1>
+      <h1 className="text-4xl font-semibold mb-6 text-center">
+        Payment Method
+      </h1>
       <div className="my-4">
         <label className="block text-lg font-bold mb-2">Select Method</label>
         <div className="col">
