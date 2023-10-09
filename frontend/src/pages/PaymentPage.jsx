@@ -32,7 +32,7 @@ const PaymentPage = () => {
             type="submit"
             className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-3 px-4 rounded transition duration-300 ease-in-out text-xs"
           >
-            Continue
+            Continue here
           </button>
         </div>
       </div>
