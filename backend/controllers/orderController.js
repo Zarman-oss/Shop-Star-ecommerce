@@ -17,7 +17,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
 // @route Get /api/order/myorders
 // @access Private
 
-const getProducts = asyncHandler(async (req, res) => {
+const getMyOrders = asyncHandler(async (req, res) => {
 
     res.send('get my orders')
 
@@ -46,16 +46,33 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 
 // @desc Update order to delivered
 // @route POST /api/orders/:id/deliver
-// @access Private
+// @access Private/Admin
 
 const updateOrderToDelivered = asyncHandler(async (req, res) => {
 
-    res.send('add order items for now')
+    res.send('update to delivered')
 
 });
 
 
+// @desc Gets all orders
+// @route GET /api/orders
+// @access Private/Admin
 
+const getOrders = asyncHandler(async (req, res) => {
+
+    res.send('get all orders')
+
+});
+
+export {
+    addOrderItems,
+    getMyOrders,
+    getOrderById,
+    updateOrderToPaid,
+    updateOrderToDelivered,
+    getOrders
+};
 
 
 

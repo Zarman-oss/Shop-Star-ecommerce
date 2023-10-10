@@ -4,7 +4,7 @@ import Product from '../models/productModel.js';
 
 // @desc Fetch All product
 // @route Get/Api/products
-// @acees Public
+// @access Public
 
 const getProducts = asyncHandler(async (req, res) => {
 
@@ -16,7 +16,7 @@ const getProducts = asyncHandler(async (req, res) => {
 
 // @desc Fetch a product
 // @route GET/api/products/:id
-//@acess Puclic 
+//@access Public 
 
 const getProductById = asyncHandler(async (req, res) => {
 
