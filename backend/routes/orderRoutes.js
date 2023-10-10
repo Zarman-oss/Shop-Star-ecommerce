@@ -11,23 +11,10 @@ import {
 import { protect, admin } from '../middleware/authMiddle.js'
 
 
-
-router.route('/').post(protect, addOrderItems).get(protect, admin, getUsers);
-
-router.post('/logout', logoutUser);
-
-router.post('/auth', authUser);
-// router.route('/auth').post(authUser);
-
-router
-    .route('/profile')
-    .get(protect, getUserProfile)
-    .put(protect, updateUserProfile);
-
-router
-    .route('/:id')
-    .delete(protect, admin, deleteUser)
-    .get(protect, admin, getUserById)
-    .put(protect, admin, updateUser);
+router.route('/').post(protect, addOrderItems).get(protect, admin, getOrders);
+router.route('/mine').get(protect, getMyOrders);
+router.route('/:id').get(protect, admin, getOrderById);
+router.route('/:id/pay').put(protect, updateOrderToPaid);
+router.route('/:id/deliver').put(protect, admin, updateOrderToDelivered);
 
 export default router;
