@@ -31,7 +31,7 @@ const PlaceOrderPage = () => {
         </h1>
 
         {/* Shipping Address */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
           <div className="md:col-span-1">
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold">
               Shipping
@@ -51,7 +51,7 @@ const PlaceOrderPage = () => {
           </div>
         </div>
         {/* Payment Method */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
           <div className="md:col-span-1">
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold ">
               Payment Method
@@ -68,12 +68,55 @@ const PlaceOrderPage = () => {
           </div>
         </div>
         {/* Order Items */}
-        <h2>Order Items</h2>
-        {cart.cartItems.length === 0 ? ( 
-       <Message>Your Cart is empty</Message>
-        ) : (
-         
-        )}
+        <div className=" mt-2">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold">
+            Order Items
+          </h2>
+          {cart.cartItems.length === 0 ? (
+            <Message>
+              Your Cart is empty
+              <Link to="/"> Go Back</Link>
+            </Message>
+          ) : (
+            <div className="text-lg">
+              <div className="flex items-center flex-col">
+                {cart.cartItems.map((item, index) => (
+                  <div key={index} className="flex items-center space-x-4">
+                    <div className="w-24 mt-2">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full rounded cursor-pointer"
+                      />
+                    </div>
+                    <div className="flex items-start space-x-4">
+                      <Link
+                        to={`/products/${item.product}`}
+                        className="text-lg"
+                      >
+                        {item.name}
+                      </Link>
+                      <div className="text-sm">
+                        <p>
+                          <span className="font-semibold">Quantity:</span>{' '}
+                          {item.qty}
+                        </p>
+                        <p>
+                          <span className="font-semibold">Price:</span> $
+                          {item.price}
+                        </p>
+                        <p>
+                          <span className="font-semibold">Total:</span> $
+                          {item.qty * item.price}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
