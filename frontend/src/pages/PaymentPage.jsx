@@ -28,8 +28,8 @@ const PaymentPage = () => {
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 step3 />
-      <h1 className="text-4xl font-semibold mb-6 text-center">
-        Payment Method
+      <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl  font-semibold mb-6 text-center">
+        Payment Page
       </h1>
       <form onSubmit={submitHandler}>
         <div className="my-4">

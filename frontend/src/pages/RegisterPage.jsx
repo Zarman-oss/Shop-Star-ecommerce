@@ -51,7 +51,9 @@ const RegisterPage = () => {
 
   return (
     <FormContainer>
-      <h1 className="text-4xl font-semibold mb-6 text-center">Sign Up </h1>
+      <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl  font-semibold mb-6 text-center">
+        Register Page
+      </h1>
       <form onSubmit={submitHandler}>
         {/* name  */}
         <div className="mb-4">

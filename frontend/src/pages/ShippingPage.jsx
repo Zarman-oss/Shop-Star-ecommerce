@@ -31,7 +31,9 @@ const ShippingPage = () => {
     <FormContainer>
       <CheckoutSteps step1 step2 />
 
-      <h1 className="text-4xl font-semibold mb-6 text-center">ShippingPage</h1>
+      <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl  font-semibold mb-6 text-center">
+        Shipping Page
+      </h1>
       <form onSubmit={submitHandler}>
         {/* Address  */}
         <div className="mb-4">
