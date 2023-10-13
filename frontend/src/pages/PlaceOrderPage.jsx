@@ -24,10 +24,10 @@ const PlaceOrderPage = () => {
 
   return (
     <>
+      <CheckoutSteps step1 step2 step3 step4 />
       <div className="flex flex-col md:flex-row p-4">
         {/* First Column */}
-        <div className="md:w-1/2 pr-4">
-          <CheckoutSteps step1 step2 step3 step4 />
+        <div className="md:w-1/2 pr-4 ">
           <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold mb-6 text-center">
             PlaceOrderPage
           </h1>
