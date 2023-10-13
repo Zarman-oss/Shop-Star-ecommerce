@@ -118,6 +118,7 @@ const PlaceOrderPage = () => {
               Order Summary
             </h2>
             <ul className="list-none p-0">
+              {/* Items */}
               <li className="flex items-center justify-between">
                 <span className="text-lg md:text-lg sm:text-sm">Items:</span>
                 <span>
@@ -125,12 +126,20 @@ const PlaceOrderPage = () => {
                   {cart.itemsPrice}
                 </span>
               </li>
-              {/* Add more list items as needed */}
+              {/* Shipping*/}
               <li className="flex items-center justify-between">
                 <span className="text-lg md:text-lg sm:text-sm">Shipping:</span>
                 <span>
                   <FaDollarSign className="inline-block text-green-500 md:mr-1" />
                   {cart.shippingPrice}
+                </span>
+              </li>
+              {/* Tax Price */}
+              <li className="flex items-center justify-between">
+                <span className="text-lg md:text-lg sm:text-sm">Tax:</span>
+                <span>
+                  <FaDollarSign className="inline-block text-green-500 md:mr-1" />
+                  {cart.taxPrice}
                 </span>
               </li>
             </ul>
