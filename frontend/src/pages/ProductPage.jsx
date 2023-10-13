@@ -37,10 +37,12 @@ const ProductPage = () => {
   return (
     <>
       <Link
-        className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center space-x-2"
         to="/"
+        className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded-md inline-flex items-center space-x-2 mb-2"
       >
-        Go Back
+        <button className="text-sm sm:text-base md:text-lg lg:text-xl px-2   py-1 sm:py-2 sm:px-2 md:px-3 md:py-2 lg:px-4 lg:py-2">
+          Go Back
+        </button>
       </Link>
 
       {isLoading ? (

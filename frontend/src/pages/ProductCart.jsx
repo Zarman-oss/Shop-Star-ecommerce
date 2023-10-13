@@ -30,10 +30,18 @@ function ProductCart() {
           <h1 className="text-3xl font-semibold">Shopping Cart</h1>
         </div>
       </div>
+      <Link
+        to="/"
+        className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded-md inline-flex items-center space-x-2 mb-4"
+      >
+        <button className="text-sm sm:text-base md:text-lg lg:text-xl px-2   py-1 sm:py-2 sm:px-2 md:px-3 md:py-2 lg:px-4 lg:py-2">
+          Go Back
+        </button>
+      </Link>
 
       {cartItems.length === 0 ? (
         <Message type="error" message="Your cart is empty">
-          <Link to="/">Go Back</Link>
+          {/* <Link to="/">Go Back</Link> */}
         </Message>
       ) : (
         <div className="container mx-auto px-2 md:px-4 lg:px-6 xl:px-8">
