@@ -95,12 +95,6 @@ const PlaceOrderPage = () => {
                       />
                     </div>
                     <div className="flex items-start space-x-4">
-                      {/* <Link
-                        to={`/products/${item.product}`}
-                        className="text-lg"
-                      >
-                        {item.name}
-                      </Link> */}
                       <Link
                         to={`/product/${item._id}`}
                         className="text-blue-500 hover:underline text-sm md:text-base"
