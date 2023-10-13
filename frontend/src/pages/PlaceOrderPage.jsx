@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { createElement, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { toast } from 'react-toastify';
 import Message from '../components/Message';
@@ -12,7 +12,9 @@ import { FaLocationArrow } from 'react-icons/fa';
 
 const PlaceOrderPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch;
   const cart = useSelector((state) => state.cart);
+  const [createOrder, { isLoading, error }] = useCreateOrderMutation();
 
   useEffect(() => {
     if (!cart.shippingAddress.address) {
@@ -21,6 +23,21 @@ const PlaceOrderPage = () => {
       navigate('/payment');
     }
   }, [cart.paymentMethod, cart.shippingAddress.address, navigate]);
+
+  const placeOrderHandler = async () => {
+    try {
+      const res = await createOrder({
+        orderItems: cart.cartItems,
+        shippingAddress: cart.shippingAddress,
+        paymentMethod: cart.paymentMethod,
+        itemsPrice: cart.itemsPrice,
+        shipping: cart.sh
+
+      });
+    } catch (error) {
+
+    }
+  };
 
   return (
     <>
@@ -142,8 +159,28 @@ const PlaceOrderPage = () => {
                   {cart.taxPrice}
                 </span>
               </li>
+              {/* Total Price  */}
+              <li className="flex items-center justify-between">
+                <span className="text-lg md:text-lg sm:text-sm">
+                  Total Price:
+                </span>
+                <span>
+                  <FaDollarSign className="inline-block text-green-500 md:mr-1" />
+                  {cart.totalPrice}
+                </span>
+              </li>
             </ul>
           </div>
+
+          {/* Button Place Order */}
+          <button
+            type="button"
+            className="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded text-sm"
+            // disabled={cart.carItems.length === 0}
+            onClick={placeOrderHandler}
+          >
+            Place Order
+          </button>
         </div>
       </div>
     </>
