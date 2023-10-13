@@ -7,7 +7,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { useCreateOrderMutation } from '../slices/ordersApiSlice';
 import { clearCartItems } from '../slices/cartSlice';
-import { FaPaypal } from 'react-icons/fa';
+import { FaPaypal, FaDollarSign } from 'react-icons/fa';
 import { FaLocationArrow } from 'react-icons/fa';
 
 const PlaceOrderPage = () => {
@@ -41,7 +41,7 @@ const PlaceOrderPage = () => {
                 Address:
               </h1>
               <br />
-              <FaLocationArrow className="text-xl md:text-2xl lg:text-3xl mr-1" />
+              <FaLocationArrow className="text-xl md:text-2xl lg:text-3xl mr-1 text-red-500" />
               <span className="text-sm md:text-base lg:text-lg">
                 {cart.shippingAddress.address}, {cart.shippingAddress.city},{' '}
                 {cart.shippingAddress.postalCode},{' '}
@@ -60,7 +60,8 @@ const PlaceOrderPage = () => {
               <h1 className="text-lg md:text-lg lg:text-xl font-semibold mr-1">
                 Method:
               </h1>
-              <FaPaypal className="text-xl md:text-2xl lg:text-3xl mr-2" />
+              <FaPaypal className="text-xl md:text-2xl lg:text-3xl mr-2 text-blue-500" />
+
               <span className="text-sm md:text-base lg:text-lg">
                 {cart.paymentMethod}
               </span>
@@ -79,9 +80,13 @@ const PlaceOrderPage = () => {
             </Message>
           ) : (
             <div className="text-lg">
-              <div className="flex items-center flex-col">
+              <div className="flex flex-col items-start">
+                {' '}
+                {/* Use 'items-start' to align contents to the left */}
                 {cart.cartItems.map((item, index) => (
-                  <div key={index} className="flex items-center space-x-4">
+                  <div key={index} className="flex items-start space-x-4">
+                    {' '}
+                    {/* Use 'items-start' to align children to the left */}
                     <div className="w-24 mt-2">
                       <img
                         src={item.image}
@@ -102,17 +107,26 @@ const PlaceOrderPage = () => {
                           {item.qty}
                         </p>
                         <p>
-                          <span className="font-semibold">Price:</span> $
+                          <span className="font-semibold ">Price:</span>
+                          <FaDollarSign className="inline-block  mb-1 text-green-500" />
                           {item.price}
-                        </p>
-                        <p>
-                          <span className="font-semibold">Total:</span> $
-                          {item.qty * item.price}
                         </p>
                       </div>
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Calculate and display the total price outside the loop */}
+              <div className="text-lg mt-4">
+                <p>
+                  <span className="font-semibold text-3xl">Total Price:</span>
+                  <FaDollarSign className="inline-block  mb-1 text-green-500" />
+                  {cart.cartItems.reduce(
+                    (total, item) => total + item.qty * item.price,
+                    0
+                  )}
+                </p>
               </div>
             </div>
           )}
