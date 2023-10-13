@@ -126,6 +126,13 @@ const PlaceOrderPage = () => {
                 </span>
               </li>
               {/* Add more list items as needed */}
+              <li className="flex items-center justify-between">
+                <span className="text-lg md:text-lg sm:text-sm">Shipping:</span>
+                <span>
+                  <FaDollarSign className="inline-block text-green-500 md:mr-1" />
+                  {cart.shippingPrice}
+                </span>
+              </li>
             </ul>
           </div>
         </div>
