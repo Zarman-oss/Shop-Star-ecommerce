@@ -95,9 +95,15 @@ const PlaceOrderPage = () => {
                       />
                     </div>
                     <div className="flex items-start space-x-4">
-                      <Link
+                      {/* <Link
                         to={`/products/${item.product}`}
                         className="text-lg"
+                      >
+                        {item.name}
+                      </Link> */}
+                      <Link
+                        to={`/product/${item._id}`}
+                        className="text-blue-500 hover:underline text-sm md:text-base"
                       >
                         {item.name}
                       </Link>
@@ -122,10 +128,12 @@ const PlaceOrderPage = () => {
                 <p>
                   <span className="font-semibold text-3xl">Total Price:</span>
                   <FaDollarSign className="inline-block  mb-1 text-green-500" />
-                  {cart.cartItems.reduce(
-                    (total, item) => total + item.qty * item.price,
-                    0
-                  )}
+                  <strong className="font-semibold text-2xl text-green-500 ">
+                    {cart.cartItems.reduce(
+                      (total, item) => total + item.qty * item.price,
+                      0
+                    )}
+                  </strong>
                 </p>
               </div>
             </div>
