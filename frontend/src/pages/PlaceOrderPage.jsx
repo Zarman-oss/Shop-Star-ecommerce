@@ -1,4 +1,4 @@
-import { createElement, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import CheckoutSteps from '../components/CheckoutSteps';
@@ -12,8 +12,9 @@ import { FaLocationArrow } from 'react-icons/fa';
 
 const PlaceOrderPage = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+
   const [createOrder, { isLoading, error }] = useCreateOrderMutation();
 
   useEffect(() => {
@@ -31,11 +32,14 @@ const PlaceOrderPage = () => {
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
-        shipping: cart.sh
-
-      });
+        shippingPrice: cart.shippingPrice,
+        taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
+      }).unwrap();
+      dispatch(clearCartItems());
+      navigate(`/order/${res._id}`);
     } catch (error) {
-
+      toast.error(error);
     }
   };
 
@@ -171,16 +175,26 @@ const PlaceOrderPage = () => {
               </li>
             </ul>
           </div>
+          {/* error */}
+          <div>{error && <Message> {error}</Message>}</div>
 
           {/* Button Place Order */}
-          <button
-            type="button"
-            className="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded text-sm"
-            // disabled={cart.carItems.length === 0}
-            onClick={placeOrderHandler}
-          >
-            Place Order
-          </button>
+          <div className="mt-2">
+            <button
+              type="button"
+              disabled={cart.cartItems.length === 0}
+              onClick={placeOrderHandler}
+              className={`px-4 py-2 rounded ${
+                cart.cartItems.length === 0
+                  ? 'bg-gray-300 cursor-not-allowed'
+                  : 'bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded text-sm'
+              }`}
+            >
+              Place Order
+            </button>
+          </div>
+
+          {isLoading && <Loader />}
         </div>
       </div>
     </>
