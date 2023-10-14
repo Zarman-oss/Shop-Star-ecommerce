@@ -90,10 +90,12 @@ const PlaceOrderPage = () => {
               Order Items
             </h2>
             {cart.cartItems.length === 0 ? (
-              <Message>
-                Your Cart is empty
-                <Link to="/"> Go Back</Link>
-              </Message>
+              <div>
+                {/* <Message>
+                  Your Cart is empty
+                  <Link to="/"> Go Back</Link>
+                </Message> */}
+              </div>
             ) : (
               <div className="text-lg">
                 <div className="flex flex-col items-start">
@@ -176,7 +178,11 @@ const PlaceOrderPage = () => {
             </ul>
           </div>
           {/* error */}
-          <div>{error && <Message> {error}</Message>}</div>
+          {cart.cartItems.length === 0 && (
+            <div className="mt-2">
+              <Message message="Your cart is empty">{error}</Message>
+            </div>
+          )}
 
           {/* Button Place Order */}
           <div className="mt-2">
