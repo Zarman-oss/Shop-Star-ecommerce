@@ -15,7 +15,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
                 url: `${ORDERS_URL}/${orderId}`,
             }),
             keepUnusedDataFor: 5,
-        })
+        }),
     }),
 });
 
