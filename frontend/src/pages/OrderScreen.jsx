@@ -1,12 +1,23 @@
 import { Link, useParams } from 'react-router-dom';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { useGetOrderDetailsQuery } from '../slices/ordersApiSlice';
+import { useGetOrdersDetailsQuery } from '../slices/ordersApiSlice';
 
 const OrderScreen = () => {
+  const { id: orderId } = useParams('');
+  const {
+    data: order,
+    refetch,
+    isLoading,
+    error,
+  } = useGetOrdersDetailsQuery(orderId);
+  console.log(order);
 
-  
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : error ? (
+    <Message type="error" />
+  ) : (
     <div>
       <div>
         <h1 className="text-3xl font-semibold ">Order Page</h1>

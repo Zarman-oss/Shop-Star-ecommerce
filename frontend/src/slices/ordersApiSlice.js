@@ -17,6 +17,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
             keepUnusedDataFor: 5,
         }),
     }),
+
 });
 
-export const { useCreateOrderMutation, useGetOrderDetailsQuery } = orderApiSlice;
+export const { useCreateOrderMutation, useGetOrdersDetailsQuery } = orderApiSlice;
