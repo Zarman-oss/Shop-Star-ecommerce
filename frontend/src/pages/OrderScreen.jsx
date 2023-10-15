@@ -18,7 +18,7 @@ const OrderScreen = () => {
   ) : error ? (
     <Message type="error" />
   ) : (
-    <div>
+    <>
       <div>
         <h1 className="text-3xl font-semibold ">Order Page</h1>
       </div>
@@ -32,7 +32,21 @@ const OrderScreen = () => {
           </button>
         </Link>
       </div>
-    </div>
+      {/* H1 */}
+      <>
+        <h1>Order {order._id}</h1>
+      </>
+      {/* First Column */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="md:col-span-8">
+          <h2>Shipping</h2>
+          <p>
+            <strong>Name: </strong> {order.user.name}
+          </p>
+        </div>
+        <div className="md:col-span-4">Column</div>
+      </div>
+    </>
   );
 };
 
