@@ -43,6 +43,19 @@ const OrderScreen = () => {
           <p>
             <strong>Name: </strong> {order.user.name}
           </p>
+          <p>
+            <strong>Email: </strong> {order.user.email}
+          </p>
+          <p>
+            <strong>Address: </strong> {order.shippingAddress.address},{' '}
+            {order.shippingAddress.city} {order.shippingAddress.postalCode},{' '}
+            {order.shippingAddress.country}
+          </p>
+          {order.isDelivered ? (
+            <Message type="success">Delivered on {order.deliveredAt}</Message>
+          ) : (
+            <Message type="error"></Message>
+          )}
         </div>
         <div className="md:col-span-4">Column</div>
       </div>
