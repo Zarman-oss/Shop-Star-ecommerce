@@ -95,6 +95,7 @@ const PlaceOrderPage = () => {
                   Your Cart is empty
                   <Link to="/"> Go Back</Link>
                 </Message> */}
+                {/*  */}
               </div>
             ) : (
               <div className="text-lg">

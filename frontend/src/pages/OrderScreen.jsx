@@ -52,9 +52,11 @@ const OrderScreen = () => {
             {order.shippingAddress.country}
           </p>
           {order.isDelivered ? (
-            <Message type="success">Delivered on {order.deliveredAt}</Message>
+            <Message type="success" message="Delivered">
+              Delivered on {order.deliveredAt}
+            </Message>
           ) : (
-            <Message type="error"></Message>
+            <Message type="error" message="Your cart is empty"></Message>
           )}
         </div>
         <div className="md:col-span-4">Column</div>
