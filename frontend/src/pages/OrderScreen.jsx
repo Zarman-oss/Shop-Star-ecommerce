@@ -56,7 +56,7 @@ const OrderScreen = () => {
               Delivered on {order.deliveredAt}
             </Message>
           ) : (
-            <Message type="error" message="Your cart is empty"></Message>
+            <Message type="error" message="Not Delivered"></Message>
           )}
         </div>
         {/* / */}
