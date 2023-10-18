@@ -59,6 +59,7 @@ const OrderScreen = () => {
             <Message type="error" message="Your cart is empty"></Message>
           )}
         </div>
+        {/* / */}
         <div className="md:col-span-4">Column</div>
       </div>
     </>
