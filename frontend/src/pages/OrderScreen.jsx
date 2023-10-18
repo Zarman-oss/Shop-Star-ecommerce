@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { useGetOrdersDetailsQuery } from '../slices/ordersApiSlice';
+import { FaDollarSign } from 'react-icons/fa';
 
 const OrderScreen = () => {
   const { id: orderId } = useParams('');
@@ -19,9 +20,9 @@ const OrderScreen = () => {
     <Message type="error" />
   ) : (
     <>
-      <div>
-        <h1 className="text-3xl font-semibold ">Order Page</h1>
-      </div>
+      <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold mb-6 text-center">
+        Order Page
+      </h1>
       <div className="mt-3">
         <Link
           to="/"
@@ -34,7 +35,9 @@ const OrderScreen = () => {
       </div>
       {/* H1 */}
       <>
-        <h1>Order {order._id}</h1>
+        <h1 className="text-xl md:text-2xl lg:text-3xl font-bold">
+          Order {order._id}
+        </h1>
       </>
       {/* First Column */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -59,8 +62,61 @@ const OrderScreen = () => {
             <Message type="error" message="Not Delivered"></Message>
           )}
         </div>
-        {/* / */}
-        <div className="md:col-span-4">Column</div>
+        {/* Payment */}
+        <div className="md:col-span-8">
+          <h2>Payment Method</h2>
+          <p>
+            <strong>Method: </strong> {order.paymentMethod}
+          </p>
+          {order.isPaid ? (
+            <Message type="success" message="Delivered">
+              Paid on {order.paidAt}
+            </Message>
+          ) : (
+            <Message type="error" message="Not Paid"></Message>
+          )}
+        </div>
+        {/* Order Items */}
+        <div className="md:col-span-8">
+          <h2>Order Items</h2>
+          {order.orderItems.map((item, index) => (
+            <div key={index}>
+              <div className="flex items-center">
+                <div className="w-16">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full rounded"
+                  />
+                </div>
+                <div className="flex-1 pl-4">
+                  <Link
+                    to={`/product/${item.product}`}
+                    className="text-blue-500 hover:underline"
+                  >
+                    {item.name}
+                  </Link>
+                </div>
+                {/* Price with dollar sign  */}
+                <li className="flex items-center justify-between">
+                  <span className="flex items-center">
+                    <span className="mr-1">{item.qty} x</span>
+                    <span>
+                      {item.price}
+                      <FaDollarSign className="inline-block text-green-500 " />
+                      {' = '}
+                      {item.qty * item.price}
+                      <FaDollarSign className="inline-block text-green-500 " />
+                    </span>
+                  </span>
+                </li>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* 2nd Column */}
+        {/* <div className="md:col-span-4">Column</div> */}
       </div>
     </>
   );
