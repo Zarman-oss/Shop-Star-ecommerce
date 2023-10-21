@@ -139,7 +139,7 @@ const OrderScreen = () => {
         </div>
       </div>
       {/* Card summary */}
-      <div className="md-col-span-1">
+      <div className="md:col-span-1 mt-6 ">
         <div className="bg-white rounded-md p-4 shadow-md">
           <h2 className="text-xl md-text-2xl lg-text-3xl font-bold">
             Order Summary
@@ -150,7 +150,7 @@ const OrderScreen = () => {
               <span className="text-lg md-text-lg sm-text-sm">Items:</span>
               <span>
                 <FaDollarSign className="inline-block text-green-500 md-mr-1" />
-                {calculateTotalPrice()} {/* Calculate the total price */}
+                {calculateTotalPrice()}
               </span>
             </li>
             {/* Shipping */}
@@ -177,10 +177,12 @@ const OrderScreen = () => {
               </span>
               <span>
                 <FaDollarSign className="inline-block text-green-500 md-mr-1" />
-                {calculateTotalPrice()} {/* Calculate the total price */}
+                {calculateTotalPrice()}
               </span>
             </li>
           </ul>
+          {/* Pay Order Placeholder  */}
+          {/* Mark as delivered placeholder  */}
         </div>
       </div>
     </div>
