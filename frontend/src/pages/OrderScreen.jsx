@@ -19,7 +19,8 @@ const OrderScreen = () => {
       0
     );
     const shippingPrice = order.shippingPrice;
-    const total = itemsPrice + shippingPrice;
+    const priceTax = order.taxPrice;
+    const total = itemsPrice + shippingPrice + priceTax;
     return total;
   };
 
