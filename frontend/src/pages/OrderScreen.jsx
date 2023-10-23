@@ -65,6 +65,11 @@ const OrderScreen = () => {
     return total;
   };
 
+  function onApprove() {}
+  function onApproveTest() {}
+  function onError() {}
+  function createOrder() {}
+
   return isLoading ? (
     <Loader />
   ) : error ? (
@@ -80,7 +85,7 @@ const OrderScreen = () => {
             to="/"
             className="bg-gray-300 hover-bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded-md inline-flex items-center space-x-2 mb-4"
           >
-            <button className="text-sm sm-text-base md-text-lg lg-text-xl px-2 py-1 sm-py-2 sm-px-2 md-px-3 md-py-2 lg-px-4 lg-py-2">
+            <button className="text-sm sm:text-base md:text-lg lg:text-xl px-2   py-1 sm:py-2 sm:px-2 md:px-3 md:py-2 lg:px-4 lg:py-2">
               Go Back
             </button>
           </Link>
@@ -180,7 +185,7 @@ const OrderScreen = () => {
         </div>
       </div>
       {/* Card summary */}
-      <div className="md:col-span-1 mt-6 ">
+      <div className="md:col-span-1 mt-6">
         <div className="bg-white rounded-md p-4 shadow-md">
           <h2 className="text-xl md-text-2xl lg-text-3xl font-bold">
             Order Summary
@@ -223,15 +228,37 @@ const OrderScreen = () => {
             </li>
           </ul>
 
-          {!order.isPaid && <div>{loadingPay && <Loader />}
-          
-          {isPending ? <Loader/> } :(
-   
-   <div>
-    
-   </div>
-          )
-          </div>}
+          {!order.isPaid && (
+            <div>
+              {loadingPay && <Loader />}
+              {isPending ? (
+                <Loader />
+              ) : (
+                <div>
+                  <button
+                    className="text-sm sm:text-base md:text-lg lg:text-xl px-2  py-1 sm:py-2 sm:px-2 md:px-3 md:py-2 lg:px-4 lg:py-2 bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded-md inline-flex items-center space-x-2 mb-2"
+                    onClick={onApproveTest}
+                  >
+                    Test Pay Order
+                  </button>
+
+                  <div>
+                    <PayPalButtons
+                      style={{
+                        layout: 'horizontal',
+                        color: 'blue',
+                        shape: 'rect',
+                        label: 'pay',
+                      }}
+                      createOrder={createOrder}
+                      onApprove={onApprove}
+                      onError={onError}
+                    ></PayPalButtons>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
           {/* Mark as delivered placeholder  */}
         </div>
       </div>
