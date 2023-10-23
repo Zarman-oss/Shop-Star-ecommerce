@@ -222,7 +222,16 @@ const OrderScreen = () => {
               </span>
             </li>
           </ul>
-          {/* Pay Order Placeholder  */}
+
+          {!order.isPaid && <div>{loadingPay && <Loader />}
+          
+          {isPending ? <Loader/> } :(
+   
+   <div>
+    
+   </div>
+          )
+          </div>}
           {/* Mark as delivered placeholder  */}
         </div>
       </div>
