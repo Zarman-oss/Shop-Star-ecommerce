@@ -62,20 +62,32 @@ const OrderScreen = () => {
     const shippingPrice = order.shippingPrice;
     const priceTax = order.taxPrice;
     const total = itemsPrice + shippingPrice + priceTax;
-    return total;
+    return total.toFixed(2); // Round to two decimal places
   };
 
   function onApprove(data, actions) {
-    return actions.order.capture().then(function (details) {});
+    return actions.order.capture().then(async function (details) {
+      try {
+        await payOrder({ orderId, details });
+        refetch();
+        toast.success('Payment successful');
+      } catch (err) {
+        toast.error(err?.data?.message || err.message);
+      }
+    });
   }
-  function onApproveTest() {}
+  async function onApproveTest() {
+    await payOrder({ orderId, details: { payer: {} } });
+    refetch();
+    toast.success('Payment successful');
+  }
   function onError() {}
   function createOrder() {}
 
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message type="error" />
+    <Message type="error" message="Something went wrong" />
   ) : (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div className="md:col-span-1">
