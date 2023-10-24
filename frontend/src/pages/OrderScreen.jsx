@@ -62,7 +62,7 @@ const OrderScreen = () => {
     const shippingPrice = order.shippingPrice;
     const priceTax = order.taxPrice;
     const total = itemsPrice + shippingPrice + priceTax;
-    return total.toFixed(2); // Round to two decimal places
+    return total.toFixed(2);
   };
 
   function onApprove(data, actions) {
@@ -76,13 +76,41 @@ const OrderScreen = () => {
       }
     });
   }
+
   async function onApproveTest() {
-    await payOrder({ orderId, details: { payer: {} } });
-    refetch();
-    toast.success('Payment successful');
+    try {
+      const response = await payOrder({ orderId, details: { payer: {} } });
+      if (response.data && response.data.success) {
+        // Payment was successful, trigger a refetch of the order data
+        refetch();
+        toast.success('Payment successful');
+      } else {
+        toast.error('Payment failed');
+      }
+    } catch (err) {
+      toast.error(err?.data?.message || err.message);
+    }
   }
-  function onError() {}
-  function createOrder() {}
+
+  function onError(err) {
+    toast.error(err.message);
+  }
+
+  function createOrder(data, actions) {
+    return actions.order
+      .create({
+        purchase_units: [
+          {
+            amount: {
+              value: order.totalPrice,
+            },
+          },
+        ],
+      })
+      .then((orderId) => {
+        return orderId;
+      });
+  }
 
   return isLoading ? (
     <Loader />
@@ -258,12 +286,6 @@ const OrderScreen = () => {
 
                   <div>
                     <PayPalButtons
-                      style={{
-                        layout: 'horizontal',
-                        color: 'blue',
-                        shape: 'rect',
-                        label: 'pay',
-                      }}
                       createOrder={createOrder}
                       onApprove={onApprove}
                       onError={onError}
