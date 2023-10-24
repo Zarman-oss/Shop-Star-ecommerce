@@ -65,7 +65,9 @@ const OrderScreen = () => {
     return total;
   };
 
-  function onApprove() {}
+  function onApprove(data, actions) {
+    return actions.order.capture().then(function (details) {});
+  }
   function onApproveTest() {}
   function onError() {}
   function createOrder() {}
@@ -236,7 +238,7 @@ const OrderScreen = () => {
               ) : (
                 <div>
                   <button
-                    className="text-sm sm:text-base md:text-lg lg:text-xl px-2  py-1 sm:py-2 sm:px-2 md:px-3 md:py-2 lg:px-4 lg:py-2 bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold  rounded-md inline-flex items-center space-x-2 mb-2"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl px-2  py-2 sm:py-2 sm:px-2 md:px-3 md:py-2 lg:px-4 lg:py-2 bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold  rounded-md inline-flex items-center space-x-2 mb-2"
                     onClick={onApproveTest}
                   >
                     Test Pay Order
@@ -265,5 +267,5 @@ const OrderScreen = () => {
     </div>
   );
 };
-
+// make believe this
 export default OrderScreen;
