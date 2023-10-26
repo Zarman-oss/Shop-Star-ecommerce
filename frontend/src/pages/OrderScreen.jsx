@@ -81,7 +81,6 @@ const OrderScreen = () => {
     try {
       const response = await payOrder({ orderId, details: { payer: {} } });
       if (response.data && response.data.success) {
-        // Payment was successful, trigger a refetch of the order data
         refetch();
         toast.success('Payment successful');
       } else {

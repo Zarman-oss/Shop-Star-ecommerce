@@ -30,7 +30,35 @@ const ProfilePage = () => {
   return (
     <div className="flex">
       <div className="w-1/4 p-4">
-        <h2>User Profile</h2>
+        <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl  font-semibold mb-6 text-center">
+          User Profile
+        </h1>
+        <form onSubmit={submitHandler}>
+          <div className="my-2">
+            <label
+              htmlFor="name"
+              className="block text-sm font-md text-gray-700"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="border rounded-md py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
+              placeholder="Enter name"
+            />
+          </div>
+
+          {/* <button
+            type="submit"
+            className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-3 px-4 rounded transition duration-300 ease-in-out text-xs"
+          >
+            Continue
+          </button> */}
+        </form>
       </div>
       <div className="w-3/4 p-4">Column</div>
     </div>
