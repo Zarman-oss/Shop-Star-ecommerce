@@ -34,6 +34,7 @@ const ProfilePage = () => {
           User Profile
         </h1>
         <form onSubmit={submitHandler}>
+          {/* Name */}
           <div className="my-2">
             <label
               htmlFor="name"
