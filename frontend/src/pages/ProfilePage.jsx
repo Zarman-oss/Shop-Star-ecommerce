@@ -5,6 +5,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { useProfileMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
+import { useGetMyOrdersQuery } from '../slices/ordersApiSlice';
 
 const ProfilePage = () => {
   const [name, setName] = useState('');
@@ -17,6 +18,8 @@ const ProfilePage = () => {
 
   const [updateProfile, { isLoading: loadingUpdateProfile }] =
     useProfileMutation();
+
+  const { data: orders, isLoading, error } = useGetMyOrdersQuery();
 
   useEffect(() => {
     if (userInfo) {
@@ -135,6 +138,7 @@ const ProfilePage = () => {
           {loadingUpdateProfile && <Loader />}
         </form>
       </div>
+      {/* Second Column */}
       <div className="w-3/4 p-4">Column</div>
     </div>
   );
