@@ -26,7 +26,6 @@ This project is an e-commerce website where users can browse and purchase produc
 - **Tailwind CSS:** A utility-first CSS framework for styling.
 - **Redux:** A state management library for managing application state.
 - **Redux Thunk:** Middleware for handling asynchronous actions in Redux.
-- **Axios:** A promise-based HTTP client for making API requests.
 - **JWT (JSON Web Tokens):** For secure user authentication.
 - **Bcrypt:** A library for hashing user passwords securely.
 - **Heroku:** A cloud platform for deploying the application.
