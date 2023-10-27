@@ -18,7 +18,7 @@ const Home = () => {
       ) : (
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-3xl font-semibold">Shopping Cart</h1>
+            <h1 className="text-3xl font-semibold">Featured Prod777</h1>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
             {products.map((product) => (

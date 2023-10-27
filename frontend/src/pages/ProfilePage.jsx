@@ -139,7 +139,9 @@ const ProfilePage = () => {
         </form>
       </div>
       {/* Second Column */}
-      <div className="w-3/4 p-4">Column</div>
+      <div className="w-3/4 p-4">
+        Column
+        </div>
     </div>
   );
 };
