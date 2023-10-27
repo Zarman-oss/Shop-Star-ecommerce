@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import Message from '../components/Message';
+import { FaTimes } from 'react-icons/fa';
 import Loader from '../components/Loader';
 import { useProfileMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
@@ -140,8 +141,65 @@ const ProfilePage = () => {
       </div>
       {/* Second Column */}
       <div className="w-3/4 p-4">
-        Column
-        </div>
+        <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold mb-6 text-center">
+          My Orders
+        </h1>
+        {isLoading ? (
+          <Loader />
+        ) : error ? (
+          <Message type="warning">
+            {error?.data?.message || error.error}
+          </Message>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white border border-gray-150 shadow-md">
+              <thead>
+                <tr>
+                  <th className="text-sm md:text-base lg:text-lg xl:text-xl">
+                    ID
+                  </th>
+                  <th className="text-sm md:text-base lg:text-lg xl:text-xl">
+                    DATE
+                  </th>
+                  <th className="text-sm md:text-base lg:text-lg xl:text-xl">
+                    TOTAL
+                  </th>
+                  <th className="text-sm md:text-base lg:text-lg xl:text-xl">
+                    PAID
+                  </th>
+                  <th className="text-sm md:text-base lg:text-lg xl:text-xl">
+                    DELIVERED
+                  </th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {orders.map((order) => (
+                  <tr key={order._id}>
+                    <td>{order._id}</td>
+                    <td>{order.createdAt.substring(0, 10)}</td>
+                    <td>{order.totalPrice}</td>
+                    <td>
+                      {order.isPaid ? (
+                        order.paidAt.substring(0, 10)
+                      ) : (
+                        <FaTimes style={{ color: 'red' }} />
+                      )}
+                    </td>
+                    <td>
+                      {order.isDelivered ? (
+                        order.deliverAt.substring(0, 10)
+                      ) : (
+                        <FaTimes style={{ color: 'red' }} />
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
