@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import Message from '../components/Message';
 import { FaTimes } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Loader from '../components/Loader';
 import { useProfileMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
@@ -176,22 +177,35 @@ const ProfilePage = () => {
               <tbody>
                 {orders.map((order) => (
                   <tr key={order._id}>
-                    <td>{order._id}</td>
-                    <td>{order.createdAt.substring(0, 10)}</td>
-                    <td>{order.totalPrice}</td>
-                    <td>
+                    <td className="text-sm md:text-base lg:text-lg xl:text-xl">
+                      {order._id}
+                    </td>
+                    <td className="text-sm md:text-base lg:text-lg xl:text-xl">
+                      {order.createdAt.substring(0, 10)}
+                    </td>
+                    <td className="md:text-lg lg:text-xl xl:text-2xl">
+                      {order.totalPrice}
+                    </td>
+                    <td className="md:text-lg lg:text-xl xl:text-2xl">
                       {order.isPaid ? (
                         order.paidAt.substring(0, 10)
                       ) : (
-                        <FaTimes style={{ color: 'red' }} />
+                        <FaTimes style={{ color: 'red', display: 'block' }} />
                       )}
                     </td>
-                    <td>
+                    <td className="md:text-lg lg:text-xl xl:text-2xl">
                       {order.isDelivered ? (
                         order.deliverAt.substring(0, 10)
                       ) : (
-                        <FaTimes style={{ color: 'red' }} />
+                        <FaTimes style={{ color: 'red', display: 'block' }} />
                       )}
+                    </td>
+                    <td>
+                      <Link to={`/order/${order._id}`}>
+                        <button className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-3 px-4 rounded transition duration-300 ease-in-out text-xs">
+                          Details
+                        </button>
+                      </Link>
                     </td>
                   </tr>
                 ))}
