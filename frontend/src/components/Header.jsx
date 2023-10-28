@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaUser, FaShoppingCart } from 'react-icons/fa';
+import { FaUser, FaShoppingCart, FaUserCircle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
@@ -112,6 +112,48 @@ const Header = () => {
               <span className="text-lg hover:text-gray-300">Sign-in</span>
             </Link>
           )}
+          {/* Admin version of nav-bar */}
+          {userInfo && userInfo.isAdmin && (
+            <div className="relative group">
+              <div
+                className="text-xl hover:text-gray-300 focus:outline-none flex items-center space-x-1 cursor-pointer"
+                onClick={toggleMenu}
+              >
+                <FaUserCircle />
+                <span className="text-lg hover:text-gray-300">
+                  {userInfo.name}
+                </span>
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className={`h-5 w-5 transform transition-transform  ${
+                      isMenuOpen ? 'rotate-180' : 'rotate-0'
+                    } absolute top-1/2 mt-2 left-5 origin-center`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </div>
+              {/* Dropdown admin version */}
+              {isMenuOpen && (
+                <div className="">
+                  <ul className="absolute left-0 mt-2 bg-gray-900 text-white py-2 px-4 space-y-2 rounded-md">
+                    <li>
+                      <Link to="/profile">Profile</Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* hamburger button */}
@@ -137,6 +179,22 @@ const Header = () => {
         <ul className="text-white p-4 space-y-2">
           {/* User Info, Profile, and Logout links */}
           {userInfo && isMenuOpen && (
+            <div className="text-white text-xl py-2 px-4">
+              <div className="mb-2">{userInfo.name}</div>
+              <Link to="/profile" className="text-lg hover:text-gray-300">
+                Profile
+              </Link>
+              <button
+                onClick={logOutHandler}
+                className="w-full text-left focus:outline-none text-lg hover:text-gray-300"
+              >
+                Logout
+              </button>
+            </div>
+          )}
+
+          {/* Admin version of nav-bar */}
+          {userInfo && userInfo.isAdmin && (
             <div className="text-white text-xl py-2 px-4">
               <div className="mb-2">{userInfo.name}</div>
               <Link to="/profile" className="text-lg hover:text-gray-300">

@@ -19,11 +19,11 @@ import LoginScreen from './pages/LoginScreen.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import ShippingPage from './pages/ShippingPage.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
+import AdminRoute from './components/AdminRoute.jsx';
 import PaymentPage from './pages/PaymentPage.jsx';
 import PlaceOrderPage from './pages/PlaceOrderPage.jsx';
 import OrderScreen from './pages/OrderScreen.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
-import AdminRoute from './components/AdminRoute.jsx';
 import OrderListScreen from './pages/admin/OrderListScreen.jsx';
 
 const router = createBrowserRouter(
