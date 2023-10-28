@@ -120,9 +120,7 @@ const Header = () => {
                 onClick={toggleMenu}
               >
                 <FaUserCircle />
-                <span className="text-lg hover:text-gray-300">
-                  {userInfo.name}
-                </span>
+                <span className="text-lg hover:text-gray-300">Admin</span>
                 <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +145,13 @@ const Header = () => {
                 <div className="">
                   <ul className="absolute left-0 mt-2 bg-gray-900 text-white py-2 px-4 space-y-2 rounded-md">
                     <li>
-                      <Link to="/profile">Profile</Link>
+                      <Link to="/admin/orderlist">Orders</Link>
+                    </li>
+                    <li>
+                      <Link to="/admin/userlist">Users</Link>
+                    </li>
+                    <li>
+                      <Link to="/admin/productlist">Products</Link>
                     </li>
                   </ul>
                 </div>
@@ -196,16 +200,13 @@ const Header = () => {
           {/* Admin version of nav-bar */}
           {userInfo && userInfo.isAdmin && (
             <div className="text-white text-xl py-2 px-4">
-              <div className="mb-2">{userInfo.name}</div>
-              <Link to="/profile" className="text-lg hover:text-gray-300">
-                Profile
-              </Link>
-              <button
-                onClick={logOutHandler}
-                className="w-full text-left focus:outline-none text-lg hover:text-gray-300"
+              <div className="mb-2">Admin</div>
+              <Link
+                to="/admin/orderlist"
+                className="text-lg hover:text-gray-300"
               >
-                Logout
-              </button>
+                Orders
+              </Link>
             </div>
           )}
           {/* Cart and Sign-in links */}
