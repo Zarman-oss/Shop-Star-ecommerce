@@ -2,10 +2,31 @@ import { FaTimes, FaEdit, FaTrash } from 'react-icons/fa';
 import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 import { Link } from 'react-router-dom';
-import { useGetProductsQuery } from '../../slices/productApiSlice';
+import {
+  useGetProductsQuery,
+  useCreateProductMutation,
+} from '../../slices/productApiSlice';
+import { toast } from 'react-toastify';
 
 const ProductListScreen = () => {
   const { data: products, isLoading, error } = useGetProductsQuery();
+
+  const [createProduct, { isLoading: loadingCreate }, refetch] =
+    useCreateProductMutation();
+
+  const deleteHandler = (id) => {
+    console.log('delete', id);
+  };
+  const createProductHandler = async () => {
+    if (window.confirm('Are you sure you wanna create an entry?  ')) {
+      try {
+        await createProduct();
+        refetch();
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
+    }
+  };
 
   return (
     <div className="container mx-auto">
@@ -13,10 +34,14 @@ const ProductListScreen = () => {
         <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold">
           Products
         </h1>
-        <button className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-3 px-4 rounded transition duration-300 ease-in-out text-xs">
+        <button
+          onClick={createProductHandler}
+          className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-3 px-4 rounded transition duration-300 ease-in-out text-xs"
+        >
           <FaEdit className="inline-block mr-1" /> Create Product
         </button>
       </div>
+      {loadingCreate && <Loader />}
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -63,12 +88,21 @@ const ProductListScreen = () => {
                     {product.brand}
                   </td>
 
-                  <td>
-                    <Link to={`/admin/product/${product._id}`}>
-                      <button className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-3 px-4 rounded transition duration-300 ease-in-out text-xs">
-                        Details
+                  <td className="flex items-center">
+                    <Link
+                      to={`/admin/product/${product._id}/edit`}
+                      className="mr-2"
+                    >
+                      <button className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-2 px-2 rounded transition duration-300 ease-in-out text-xs">
+                        <FaEdit />
                       </button>
                     </Link>
+                    <button
+                      onClick={() => deleteHandler(product._id)}
+                      className="hover:text-red-600 hover:scale-105 transform transition-transform"
+                    >
+                      <FaTrash />
+                    </button>
                   </td>
                 </tr>
               ))}
