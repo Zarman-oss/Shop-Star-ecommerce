@@ -9,7 +9,7 @@ const OrderListScreen = () => {
   return (
     <>
       <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl  font-semibold mb-6 ">
-        User Profile
+        Orders
       </h1>
       {isLoading ? (
         <Loader />
@@ -22,6 +22,9 @@ const OrderListScreen = () => {
               <tr>
                 <th className="text-sm md:text-base lg:text-lg xl:text-xl">
                   ID
+                </th>
+                <th className="text-sm md:text-base lg:text-lg xl:text-xl">
+                  User
                 </th>
                 <th className="text-sm md:text-base lg:text-lg xl:text-xl">
                   DATE
@@ -41,27 +44,44 @@ const OrderListScreen = () => {
             <tbody>
               {orders.map((order) => (
                 <tr key={order._id}>
-                  <td className="text-sm md:text-base lg:text-lg xl:text-xl">
+                  <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center">
                     {order._id}
                   </td>
-                  <td className="text-sm md:text-base lg:text-lg xl:text-xl">
+                  <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
+                    {order.user && order.user.name}
+                  </td>
+                  <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
                     {order.createdAt.substring(0, 10)}
                   </td>
-                  <td className="md:text-lg lg:text-xl xl:text-2xl">
-                    {order.totalPrice}
+                  <td>
+                    {order.totalPrice ? (
+                      order.totalPrice
+                    ) : (
+                      <FaTimes
+                        className="mx-auto"
+                        style={{ color: 'red', display: 'block' }}
+                      />
+                    )}
                   </td>
-                  <td className="md:text-lg lg:text-xl xl:text-2xl">
+
+                  <td>
                     {order.isPaid ? (
                       order.paidAt.substring(0, 10)
                     ) : (
-                      <FaTimes style={{ color: 'red', display: 'block' }} />
+                      <FaTimes
+                        className="mx-auto"
+                        style={{ color: 'red', display: 'block' }}
+                      />
                     )}
                   </td>
-                  <td className="md:text-lg lg:text-xl xl:text-2xl">
-                    {order.isDelivered ? (
-                      order.deliverAt.substring(0, 10)
+                  <td>
+                    {order.Delivered ? (
+                      order.paidAt.substring(0, 10)
                     ) : (
-                      <FaTimes style={{ color: 'red', display: 'block' }} />
+                      <FaTimes
+                        className="mx-auto"
+                        style={{ color: 'red', display: 'block' }}
+                      />
                     )}
                   </td>
                   <td>

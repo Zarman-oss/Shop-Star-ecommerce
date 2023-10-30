@@ -177,27 +177,33 @@ const ProfilePage = () => {
               <tbody>
                 {orders.map((order) => (
                   <tr key={order._id}>
-                    <td className="text-sm md:text-base lg:text-lg xl:text-xl">
+                    <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center">
                       {order._id}
                     </td>
-                    <td className="text-sm md:text-base lg:text-lg xl:text-xl">
+                    <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center">
                       {order.createdAt.substring(0, 10)}
                     </td>
-                    <td className="md:text-lg lg:text-xl xl:text-2xl">
+                    <td className="md:text-lg lg:text-xl xl:text-2xl text-center">
                       {order.totalPrice}
                     </td>
-                    <td className="md:text-lg lg:text-xl xl:text-2xl">
+                    <td className="md:text-lg lg:text-xl xl:text-2xl text-center">
                       {order.isPaid ? (
                         order.paidAt.substring(0, 10)
                       ) : (
-                        <FaTimes style={{ color: 'red', display: 'block' }} />
+                        <FaTimes
+                          className="mx-auto"
+                          style={{ color: 'red', display: 'block' }}
+                        />
                       )}
                     </td>
-                    <td className="md:text-lg lg:text-xl xl:text-2xl">
+                    <td className="md:text-lg lg:text-xl xl:text-2xl text-center ">
                       {order.isDelivered ? (
                         order.deliverAt.substring(0, 10)
                       ) : (
-                        <FaTimes style={{ color: 'red', display: 'block' }} />
+                        <FaTimes
+                          className="mx-auto"
+                          style={{ color: 'red', display: 'block' }}
+                        />
                       )}
                     </td>
                     <td>
