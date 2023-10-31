@@ -1,4 +1,4 @@
-import { FaTimes, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 import { Link } from 'react-router-dom';
@@ -9,14 +9,15 @@ import {
 import { toast } from 'react-toastify';
 
 const ProductListScreen = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery();
+  const { data: products, isLoading, error, refetch } = useGetProductsQuery();
 
-  const [createProduct, { isLoading: loadingCreate }, refetch] =
+  const [createProduct, { isLoading: loadingCreate }] =
     useCreateProductMutation();
 
   const deleteHandler = (id) => {
     console.log('delete', id);
   };
+
   const createProductHandler = async () => {
     if (window.confirm('Are you sure you wanna create an entry?  ')) {
       try {
