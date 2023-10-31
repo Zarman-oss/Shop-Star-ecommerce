@@ -119,6 +119,23 @@ const EditScreen = () => {
                 className="border rounded-md py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
               />
             </div>
+            {/* countInStock */}
+            <div className="mb-4">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                <h2 className="text-2xl">Count In Stock</h2>
+              </label>
+              <input
+                id="name"
+                type="text"
+                placeholder="Enter countInStock"
+                value={countInStock}
+                onChange={(e) => setCountInStock(e.target.value)}
+                className="border rounded-md py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
+              />
+            </div>
             {/* Sign Up Button */}
             <button
               type="submit"
