@@ -1,4 +1,4 @@
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaDollarSign, FaEdit, FaTrash } from 'react-icons/fa';
 import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 import { Link } from 'react-router-dom';
@@ -83,7 +83,8 @@ const ProductListScreen = () => {
                       {product.name}
                     </td>
                     <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
-                      {product.price}
+                      {product.price}{' '}
+                      <FaDollarSign className="inline-block mb-1 text-green-500" />
                     </td>
                     <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
                       {product.category}

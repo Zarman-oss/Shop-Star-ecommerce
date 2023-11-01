@@ -38,6 +38,7 @@ const EditScreen = () => {
       setPrice(product.price);
       setImage(product.image);
       setBrand(product.brand);
+      setCategory(product.category);
       setCountInStock(product.countInStock);
       setDescription(product.description);
     }
