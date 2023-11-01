@@ -23,7 +23,7 @@ const EditScreen = () => {
   const {
     data: product,
     isLoading,
-    refetch,
+
     error,
   } = useGetProductsDetailsQuery(productId);
 
