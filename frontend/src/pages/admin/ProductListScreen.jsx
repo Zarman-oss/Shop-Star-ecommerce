@@ -82,10 +82,11 @@ const ProductListScreen = () => {
                     <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
                       {product.name}
                     </td>
-                    <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
+                    <td className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-center">
                       {product.price}{' '}
                       <FaDollarSign className="inline-block mb-1 text-green-500" />
                     </td>
+
                     <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
                       {product.category}
                     </td>
