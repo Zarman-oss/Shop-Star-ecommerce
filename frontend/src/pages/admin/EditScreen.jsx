@@ -44,8 +44,8 @@ const EditScreen = () => {
   }, [product]);
 
   const submitHandler = async (e) => {
-    e.preventDefault;
-    const updateProduct = {
+    e.preventDefault();
+    const updatedProduct = {
       productId,
       name,
       price,
@@ -55,7 +55,7 @@ const EditScreen = () => {
       countInStock,
       description,
     };
-    const result = await updateProduct(updateProduct);
+    const result = await updateProduct(updatedProduct);
     if (result.error) {
       toast.error(result.error);
     } else {
@@ -189,7 +189,7 @@ const EditScreen = () => {
                 className="border rounded-md py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
               />
             </div>
-            {/* Sign Up Button */}
+            {/* Update Button */}
             <button
               type="submit"
               className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-3 px-4 rounded transition duration-300 ease-in-out text-xs"
