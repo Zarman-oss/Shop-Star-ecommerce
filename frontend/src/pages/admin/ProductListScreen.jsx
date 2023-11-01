@@ -19,7 +19,7 @@ const ProductListScreen = () => {
   };
 
   const createProductHandler = async () => {
-    if (window.confirm('Are you sure you wanna create an entry?  ')) {
+    if (window.confirm('Are you sure you wanna create a new product?  ')) {
       try {
         await createProduct();
         refetch();
@@ -42,73 +42,77 @@ const ProductListScreen = () => {
           <FaEdit className="inline-block mr-1" /> Create Product
         </button>
       </div>
+
       {loadingCreate && <Loader />}
+
       {isLoading ? (
         <Loader />
       ) : error ? (
         <Message type="warning">{error}</Message>
       ) : (
         <>
-          <table className="min-w-full bg-white border border-gray-150 shadow-md">
-            <thead>
-              <tr>
-                <th className="text-sm md:text-base lg:text-lg xl:text-xl">
-                  ID
-                </th>
-                <th className="text-sm md:text-base lg:text-lg xl:text-xl">
-                  NAME
-                </th>
-                <th className="text-sm md:text-base lg:text-lg xl:text-xl">
-                  PRICE
-                </th>
-                <th className="text-sm md:text-base lg:text-lg xl:text-xl">
-                  CATEGORY
-                </th>
-                <th className="text-sm md:text-base lg:text-lg xl:text-xl">
-                  BRAND
-                </th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((product) => (
-                <tr key={product._id}>
-                  <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center">
-                    {product._id}
-                  </td>
-                  <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
-                    {product.name}
-                  </td>
-                  <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
-                    {product.price}
-                  </td>
-                  <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
-                    {product.category}
-                  </td>
-                  <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
-                    {product.brand}
-                  </td>
-
-                  <td className="flex items-center">
-                    <Link
-                      to={`/admin/product/${product._id}/edit`}
-                      className="mr-2"
-                    >
-                      <button className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-2 px-2 rounded transition duration-300 ease-in-out text-xs">
-                        <FaEdit />
-                      </button>
-                    </Link>
-                    <button
-                      onClick={() => deleteHandler(product._id)}
-                      className="hover:text-red-600 hover:scale-105 transform transition-transform"
-                    >
-                      <FaTrash />
-                    </button>
-                  </td>
+          <div className="mx-auto">
+            <table className="min-w-full bg-white border border-gray-150 shadow-md ">
+              <thead>
+                <tr>
+                  <th className="text-sm md:text-base lg:text-lg xl:text-xl">
+                    ID
+                  </th>
+                  <th className="text-sm md:text-base lg:text-lg xl:text-xl">
+                    NAME
+                  </th>
+                  <th className="text-sm md:text-base lg:text-lg xl:text-xl">
+                    PRICE
+                  </th>
+                  <th className="text-sm md:text-base lg:text-lg xl:text-xl">
+                    CATEGORY
+                  </th>
+                  <th className="text-sm md:text-base lg:text-lg xl:text-xl">
+                    BRAND
+                  </th>
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {products.map((product) => (
+                  <tr key={product._id}>
+                    <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center">
+                      {product._id}
+                    </td>
+                    <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
+                      {product.name}
+                    </td>
+                    <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
+                      {product.price}
+                    </td>
+                    <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
+                      {product.category}
+                    </td>
+                    <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center ">
+                      {product.brand}
+                    </td>
+
+                    <td className="flex items-center">
+                      <Link
+                        to={`/admin/product/${product._id}/edit`}
+                        className="mr-2"
+                      >
+                        <button className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-2 px-2 rounded transition duration-300 ease-in-out text-xs">
+                          <FaEdit />
+                        </button>
+                      </Link>
+                      <button
+                        onClick={() => deleteHandler(product._id)}
+                        className="hover:text-red-600 hover:scale-105 transform transition-transform"
+                      >
+                        <FaTrash />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </>
       )}
     </div>

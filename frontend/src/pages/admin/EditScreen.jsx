@@ -32,8 +32,6 @@ const EditScreen = () => {
 
   const navigate = useNavigate();
 
-  const submitHandler = () => {};
-
   useEffect(() => {
     if (product) {
       setName(product.name);
@@ -44,6 +42,27 @@ const EditScreen = () => {
       setDescription(product.description);
     }
   }, [product]);
+
+  const submitHandler = async (e) => {
+    e.preventDefault;
+    const updateProduct = {
+      productId,
+      name,
+      price,
+      image,
+      brand,
+      category,
+      countInStock,
+      description,
+    };
+    const result = await updateProduct(updateProduct);
+    if (result.error) {
+      toast.error(result.error);
+    } else {
+      toast.success('Product updated');
+      navigate('/admin/productlist');
+    }
+  };
 
   return (
     <div>
@@ -129,10 +148,44 @@ const EditScreen = () => {
               </label>
               <input
                 id="name"
-                type="text"
+                type="number"
                 placeholder="Enter countInStock"
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
+                className="border rounded-md py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
+              />
+            </div>
+            {/* category */}
+            <div className="mb-4">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                <h2 className="text-2xl">Category</h2>
+              </label>
+              <input
+                id="name"
+                type="text"
+                placeholder="Enter category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="border rounded-md py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
+              />
+            </div>
+            {/* description */}
+            <div className="mb-4">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                <h2 className="text-2xl">Description</h2>
+              </label>
+              <input
+                id="name"
+                type="text"
+                placeholder="Enter category"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 className="border rounded-md py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
               />
             </div>
@@ -140,9 +193,8 @@ const EditScreen = () => {
             <button
               type="submit"
               className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-3 px-4 rounded transition duration-300 ease-in-out text-xs"
-              disabled={isLoading}
             >
-              Done
+              Update
             </button>
             {isLoading && <Loader />}
           </form>
