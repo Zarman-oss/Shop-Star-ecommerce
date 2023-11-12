@@ -9,7 +9,7 @@ This project is an e-commerce website where users can browse and purchase produc
 
 ## Features
 
-- User authentication (signup, login, logout)
+- User authentication (sign up, login, logout)
 - Product listing with details
 - Shopping cart management
 - User profiles
