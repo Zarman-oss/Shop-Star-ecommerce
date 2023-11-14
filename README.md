@@ -1,4 +1,3 @@
-
 # E-Commerce Shop Star
 
 Welcome to the E-Commerce Shop Site repository! This is a full-stack web application built using the MERN (MongoDB, Express, React, Node.js) stack, along with Vite for fast development and Tailwind CSS for styling. This repository contains the source code for the entire project.
@@ -36,17 +35,19 @@ To get started with this project, follow the instructions below:
 
 ### Installation
 
-1. **Clone the repository:**  
+1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/your-username/e/Shop-Star.git
    ```
 
-2. **Change into the project directory:**  
+2. **Change into the project directory:**
+
    ```bash
    cd Shop-Star
    ```
 
-3. **Install the project dependencies:**  
+3. **Install the project dependencies:**
    ```bash
    npm install
    ```
@@ -55,11 +56,13 @@ To get started with this project, follow the instructions below:
 
 1. **Set up the MongoDB database:**  
    Create a `.env` file in the project root directory and add your MongoDB connection string, like this:
+
    ```
    MONGODB_URI=your-mongodb-connection-string
    ```
 
-2. **Start the development server:**  
+2. **Start the development server:**
+
    ```bash
    npm run dev
    ```
