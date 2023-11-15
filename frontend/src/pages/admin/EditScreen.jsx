@@ -70,7 +70,8 @@ const EditScreen = () => {
   };
 
   const uploadFileHandler = async (e) => {
-    console.log(e.target.files[0]);
+    const formData = new FormData();
+    formData.append('image', e.target.files[0]);
   };
 
   return (
@@ -129,7 +130,7 @@ const EditScreen = () => {
                 className="border rounded-md py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
               />
             </div>
-            {/* Image Upload */}
+            {/* Image Upload*/}
             <div className="mb-4">
               <label
                 htmlFor="email"
@@ -138,7 +139,7 @@ const EditScreen = () => {
                 <h2 className="text-2xl">Upload Image </h2>
               </label>
               <input
-                id="name"
+                id="image"
                 type="text"
                 placeholder="Enter Image Url"
                 value={image}
