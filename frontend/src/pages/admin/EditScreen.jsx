@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import {
   useUpdateProductMutation,
   useGetProductsDetailsQuery,
+  useUploadProductImageMutation,
 } from '../../slices/productApiSlice';
 import Message from '../../components/Message';
 
@@ -29,6 +30,9 @@ const EditScreen = () => {
 
   const [updateProduct, { isLoading: loadingUpdate }] =
     useUpdateProductMutation();
+
+  const [uploadProductImage, { isLoading: loadingUpload }] =
+    useUploadProductImageMutation();
 
   const navigate = useNavigate();
 
@@ -63,6 +67,10 @@ const EditScreen = () => {
       toast.success('Product updated');
       navigate('/admin/productlist');
     }
+  };
+
+  const uploadFileHandler = async (e) => {
+    console.log(e.target.files[0]);
   };
 
   return (
@@ -121,7 +129,30 @@ const EditScreen = () => {
                 className="border rounded-md py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
               />
             </div>
-            {/* Image  */}
+            {/* Image Upload */}
+            <div className="mb-4">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                <h2 className="text-2xl">Upload Image </h2>
+              </label>
+              <input
+                id="name"
+                type="text"
+                placeholder="Enter Image Url"
+                value={image}
+                onChange={(e) => setImage}
+                className="border rounded-md py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
+              />
+              <input
+                id="name"
+                type="file"
+                label="Choose File"
+                onChange={uploadFileHandler}
+                className=" py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
+              />
+            </div>
             {/* brand */}
             <div className="mb-4">
               <label
