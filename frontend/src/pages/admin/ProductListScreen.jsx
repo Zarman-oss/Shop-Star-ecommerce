@@ -107,12 +107,12 @@ const ProductListScreen = () => {
                       {product.brand}
                     </td>
 
-                    <td className="flex items-center">
+                    <td className="flex items-center space-x-0">
                       <Link
                         to={`/admin/product/${product._id}/edit`}
                         className="mr-2"
                       >
-                        <button className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-2 px-2 rounded transition duration-300 ease-in-out text-xs">
+                        <button className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-3 px-4 rounded transition duration-300 ease-in-out text-xs">
                           <FaEdit />
                         </button>
                       </Link>

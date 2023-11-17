@@ -34,8 +34,6 @@ const EditScreen = () => {
   const [uploadProductImage, { isLoading: loadingUpload }] =
     useUploadProductImageMutation();
 
- 
-
   const navigate = useNavigate();
 
   useEffect(() => {
