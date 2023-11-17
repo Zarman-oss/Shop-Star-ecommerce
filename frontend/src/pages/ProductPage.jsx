@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import Rating from '../components/Rating';
 import Message from '../components/Message';
 import { useDispatch, useSelector } from 'react-redux';
-import { FaDollarSign } from 'react-icons/fa';
+import { FaDollarSign, FaHandPointUp } from 'react-icons/fa';
 import { addToCart } from '../slices/cartSlice';
 import Loader from '../components/Loader';
 import { toast } from 'react-toastify';
@@ -17,7 +17,6 @@ const ProductPage = () => {
   const { id: productId } = useParams();
 
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const [qty, setQty] = useState(1);
@@ -44,6 +43,24 @@ const ProductPage = () => {
       })
     );
     navigate('/cart');
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await createReview({
+        productId,
+        rating,
+        comment,
+      }).unwrap();
+
+      refetch();
+      toast.success('Review Submitted');
+      setRating(0);
+      setComment('');
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
   };
 
   return (
@@ -158,7 +175,7 @@ const ProductPage = () => {
                     <div className="flex">
                       <div className="mt-4">
                         <button
-                          className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center space-x-2"
+                          className="bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center space-x-2 text-xs"
                           disabled={product.countInStock === 0}
                           onClick={addToCartHandler}
                         >
@@ -188,18 +205,26 @@ const ProductPage = () => {
                       <p>{review.comment}</p>
                     </li>
                   ))}
-                  {/* Create a review */}
-                  <div>
-                    <h2 className="text-2xl font-semibold">
-                      Write a Customer Review
-                    </h2>
-                    {loadingProductReview && <Loader />}
-                    {userInfo ? (
+                </ul>
+                {/* Create a review */}
+
+                <div>
+                  <h2 className="text-2xl font-semibold">
+                    Write a Customer Review
+                  </h2>
+                  {loadingProductReview && <Loader />}
+
+                  {userInfo ? (
+                    <form onSubmit={submitHandler}>
                       <div className="my-2">
-                        <label className="block text-sm font-medium text-gray-700">
+                        <label
+                          htmlFor="rating"
+                          className="block text-sm font-medium text-gray-700"
+                        >
                           Rating
                         </label>
                         <select
+                          id="rating"
                           value={rating}
                           onChange={(e) => setRating(Number(e.target.value))}
                           className="border rounded-md py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
@@ -227,14 +252,25 @@ const ProductPage = () => {
                             className="border rounded-md py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
                           />
                         </div>
+                        {/*submit Button */}
+                        <button
+                          type="submit"
+                          disabled={loadingProductReview}
+                          className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-3 px-4 rounded transition duration-300 ease-in-out text-xs"
+                        >
+                          Submit
+                        </button>
                       </div>
-                    ) : (
-                      // Display content if userInfo is not available
-                      <p>Content when userInfo is not available</p>
-                    )}
-                  </div>
-                  {/* Review end */}
-                </ul>
+                    </form>
+                  ) : (
+                    <Link to="/login">
+                      <Message message="Please sign in to write a review "></Message>
+                      <FaHandPointUp />
+                    </Link>
+                  )}
+                </div>
+
+                {/* Review end */}
               </div>
             </div>
           </div>
