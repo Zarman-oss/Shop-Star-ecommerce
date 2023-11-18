@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Paginate = ({ pages, page, isAdmin }) =>
+const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) =>
   pages > 1 && (
     <div className="flex justify-center my-4">
       <ul className="flex list-none rounded border border-gray-300">
@@ -16,8 +16,10 @@ const Paginate = ({ pages, page, isAdmin }) =>
               key={x + 1}
               to={
                 !isAdmin
-                  ? `/products/page/${x + 1}`
-                  : `/admin/products/page/${x + 1}`
+                  ? keyword
+                    ? `/search/${keyword}/page/${x + 1}`
+                    : `/products/page/${x + 1}`
+                  : `/admin/productlist/${x + 1}`
               }
               className={`block py-1 px-2 text-sm text-white hover:text-white hover:bg-gray-500 ${
                 x + 1 === page ? 'active' : ''
@@ -35,6 +37,7 @@ Paginate.propTypes = {
   pages: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
   isAdmin: PropTypes.bool.isRequired,
+  keyword: PropTypes.string,
 };
 
 export default Paginate;

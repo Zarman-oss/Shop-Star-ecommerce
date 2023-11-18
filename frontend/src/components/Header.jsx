@@ -5,6 +5,7 @@ import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import Image from '../assets/images/star.png';
 import { useSelector, useDispatch } from 'react-redux';
+import SearchBox from './SearchBox';
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -44,6 +45,10 @@ const Header = () => {
 
         {/* Navbar-right side */}
         <div className="hidden md:flex ms-auto items-center gap-3">
+          <div className="flex ">
+            <SearchBox />
+          </div>
+
           <Link
             to="/cart"
             className="flex items-center space-x-1 text-xl hover:text-gray-300"
@@ -185,9 +190,13 @@ const Header = () => {
           {userInfo && isMenuOpen && (
             <div className="text-white text-xl py-2 px-4">
               <div className="mb-2">{userInfo.name}</div>
+
               <Link to="/profile" className="text-lg hover:text-gray-300">
                 Profile
               </Link>
+              <div className=" flex  ">
+                <SearchBox />
+              </div>
               <button
                 onClick={logOutHandler}
                 className="w-full text-left focus:outline-none text-lg hover:text-gray-300"
@@ -200,7 +209,10 @@ const Header = () => {
           {/* Admin version of nav-bar */}
           {userInfo && userInfo.isAdmin && (
             <div className="text-white text-xl py-2 px-4">
-              <div className="mb-2">Admin</div>
+              {/* <div className=" flex  ">
+                <SearchBox />
+              </div> */}
+              {/* <div className="mb-2">Admin</div> */}
               <Link
                 to="/admin/orderlist"
                 className="text-lg hover:text-gray-300"

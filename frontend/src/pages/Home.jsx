@@ -6,9 +6,12 @@ import Loader from '../components/Loader';
 import Paginate from '../components/Paginate';
 
 const Home = () => {
-  const { pageNumber } = useParams();
+  const { pageNumber, keyword } = useParams();
 
-  const { data, isLoading, error } = useGetProductsQuery({ pageNumber });
+  const { data, isLoading, error } = useGetProductsQuery({
+    keyword,
+    pageNumber,
+  });
 
   return (
     <div>
@@ -34,7 +37,11 @@ const Home = () => {
               </div>
             ))}
           </div>
-          <Paginate pages={data.pages} page={data.page} />
+          <Paginate
+            pages={data.pages}
+            page={data.page}
+            keyword={keyword ? keyword : ''}
+          />
         </div>
       )}
     </div>
