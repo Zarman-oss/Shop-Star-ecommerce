@@ -12,6 +12,7 @@ import { FaDollarSign, FaHandPointUp } from 'react-icons/fa';
 import { addToCart } from '../slices/cartSlice';
 import Loader from '../components/Loader';
 import { toast } from 'react-toastify';
+import Meta from '../components/Meta';
 
 const ProductPage = () => {
   const { id: productId } = useParams();
@@ -82,6 +83,7 @@ const ProductPage = () => {
         </Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <div className=" p-4 mt-6">
             <div className="max-w-screen-md mx-auto mt-8 ">
               <div className="md:flex ">

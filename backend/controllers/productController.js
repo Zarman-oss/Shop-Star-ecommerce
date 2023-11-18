@@ -7,7 +7,7 @@ import Product from '../models/productModel.js';
 // @access Public
 
 const getProducts = asyncHandler(async (req, res) => {
-    const pageSize = 4;
+    const pageSize = process.env.PAGINATION_LIMIT;
 
     const page = Number(req.query.pageNumber) || 1;
 
@@ -161,7 +161,7 @@ const createProductReview = asyncHandler(async (req, res) => {
 
 const getTopProducts = asyncHandler(async (req, res) => {
 
-    const products = await Product.findById({}).sort({ rating: -1 }).limit(3);
+    const products = await Product.find({}).sort({ rating: -1 }).limit(3);
 
     res.status(200).json(products);
 

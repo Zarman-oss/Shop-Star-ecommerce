@@ -6,7 +6,6 @@ import Loader from '../components/Loader';
 import { Link } from 'react-router-dom';
 import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
-
 const Home = () => {
   const { pageNumber, keyword } = useParams();
 
@@ -18,7 +17,9 @@ const Home = () => {
   return (
     <div>
       {!keyword ? (
-        <ProductCarousel />
+        <div className="mt-12">
+          <ProductCarousel />
+        </div>
       ) : (
         <Link
           to="/"
@@ -42,7 +43,7 @@ const Home = () => {
             <h1 className="text-3xl font-semibold">Featured Products</h1>
           </div>
           {data && data.products && data.products.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {data.products.map((product) => (
                 <div
                   className="bg-white p-4 rounded shadow-md text-center"

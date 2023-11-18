@@ -13,6 +13,7 @@ import { Provider } from 'react-redux';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import store from './store.js';
 import Home from './pages/Home.jsx';
+import { HelmetProvider } from 'react-helmet-async';
 import ProductPage from './pages/ProductPage.jsx';
 import ProductCart from './pages/ProductCart.jsx';
 import LoginScreen from './pages/LoginScreen.jsx';
@@ -66,11 +67,13 @@ const router = createBrowserRouter(
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <PayPalScriptProvider deferLoading={true}>
-        <RouterProvider router={router} />
-      </PayPalScriptProvider>
-    </React.StrictMode>
-  </Provider>
+  <HelmetProvider>
+    <Provider store={store}>
+      <React.StrictMode>
+        <PayPalScriptProvider deferLoading={true}>
+          <RouterProvider router={router} />
+        </PayPalScriptProvider>
+      </React.StrictMode>
+    </Provider>
+  </HelmetProvider>
 );
