@@ -18,6 +18,8 @@ const Home = () => {
     <div>
       {!keyword ? (
         <div className="mt-12">
+          <h1 className="text-3xl font-semibold">Featured Products</h1>
+
           <ProductCarousel />
         </div>
       ) : (
@@ -40,7 +42,7 @@ const Home = () => {
       ) : (
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-3xl font-semibold">Featured Products</h1>
+            {/* <h1 className="text-3xl font-semibold">Featured Products</h1> */}
           </div>
           {data && data.products && data.products.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
