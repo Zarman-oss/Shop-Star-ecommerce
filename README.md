@@ -27,7 +27,6 @@ This project is an e-commerce website where users can browse and purchase produc
 - **Redux Thunk:** Middleware for handling asynchronous actions in Redux.
 - **JWT (JSON Web Tokens):** For secure user authentication.
 - **Bcrypt:** A library for hashing user passwords securely.
-- **Heroku:** A cloud platform for deploying the application.
 
 ## Getting Started
 
