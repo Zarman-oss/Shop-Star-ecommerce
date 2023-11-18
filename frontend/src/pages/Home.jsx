@@ -6,6 +6,7 @@ import Loader from '../components/Loader';
 import { Link } from 'react-router-dom';
 import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
+
 const Home = () => {
   const { pageNumber, keyword } = useParams();
 
@@ -18,7 +19,24 @@ const Home = () => {
     <div>
       {!keyword ? (
         <div className="mt-12">
-          <h1 className="text-3xl font-semibold">Featured Products</h1>
+          {/* <Message type="success" message="Featured Products" /> */}
+          {/* <h1 className="text-3xl font-semibold">Featured Products</h1> */}
+          {/* <div className="bg-gray-200 py-6 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              <h2 className="text-3xl font-bold leading-tight text-gray-900 animate-bounce">
+                Featured Products{' '}
+                <span role="img" aria-label="fire emoji">
+                  🔥
+                </span>
+              </h2>
+              <p className="mt-2 text-sm text-gray-600 animate-pulse">
+                Check out our top picks!{' '}
+                <span role="img" aria-label="sparkles emoji">
+                  ✨
+                </span>
+              </p>
+            </div>
+          </div> */}
 
           <ProductCarousel />
         </div>
@@ -41,6 +59,13 @@ const Home = () => {
         />
       ) : (
         <div className="container mx-auto px-4 py-6">
+          <div className="bg-gray-700 text-white py-3 px-4 text-center">
+            <h2 className="text-xl font-semibold">Check These Products Out</h2>
+            <p className="text-sm mt-1">
+              Explore our latest collection and find your favorites!
+            </p>
+          </div>
+
           <div className="flex items-center justify-between mb-4">
             {/* <h1 className="text-3xl font-semibold">Featured Products</h1> */}
           </div>
