@@ -39,6 +39,23 @@ const Home = () => {
           </div> */}
 
           <ProductCarousel />
+          <div className="mt-3">
+            <div className="bg-gray-700 text-white py-3 px-4 text-center flex items-center justify-center">
+              <img
+                src=""
+                alt="Product Image"
+                className="h-12 w-12 mr-2 rounded-full"
+              />
+              <div>
+                <h2 className="text-xl font-semibold">
+                  Check These Products Out
+                </h2>
+                <p className="text-sm mt-1">
+                  Explore our latest collection and find your favorites!
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       ) : (
         <Link
@@ -59,16 +76,7 @@ const Home = () => {
         />
       ) : (
         <div className="container mx-auto px-4 py-6">
-          <div className="bg-gray-700 text-white py-3 px-4 text-center">
-            <h2 className="text-xl font-semibold">Check These Products Out</h2>
-            <p className="text-sm mt-1">
-              Explore our latest collection and find your favorites!
-            </p>
-          </div>
-
-          <div className="flex items-center justify-between mb-4">
-            {/* <h1 className="text-3xl font-semibold">Featured Products</h1> */}
-          </div>
+          <div className="flex items-center justify-between mb-4"></div>
           {data && data.products && data.products.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {data.products.map((product) => (
@@ -81,7 +89,7 @@ const Home = () => {
               ))}
             </div>
           ) : (
-            <Message type="info">No products available.</Message>
+            <Message type="info" message="No products available." />
           )}
           <Paginate
             pages={data.pages}
