@@ -41,11 +41,11 @@ const Home = () => {
           <ProductCarousel />
           <div className="mt-3">
             <div className="bg-gray-700 text-white py-3 px-4 text-center flex items-center justify-center">
-              <img
+              {/* <img
                 src=""
                 alt="Product Image"
                 className="h-12 w-12 mr-2 rounded-full"
-              />
+              /> */}
               <div>
                 <h2 className="text-xl font-semibold">
                   Check These Products Out
