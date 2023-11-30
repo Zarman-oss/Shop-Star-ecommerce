@@ -21,14 +21,16 @@ const ProductCarousel = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) =>
-        prevSlide === products.length - 1 ? 0 : prevSlide + 1
-      );
-    }, 2000); // Change slide every 2 seconds
+    if (products && products.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentSlide((prevSlide) =>
+          prevSlide === products.length - 1 ? 0 : prevSlide + 1
+        );
+      }, 2000); // Change slide every 2 seconds
 
-    return () => clearInterval(interval); // Clean up the interval on component unmount
-  }, [products.length]); // Re-run effect when the number of products changes
+      return () => clearInterval(interval); // Clean up the interval on component unmount
+    }
+  }, [products]); // Re-run effect when products change
 
   return (
     <div>
@@ -47,46 +49,26 @@ const ProductCarousel = () => {
         >
           {/* Carousel items */}
           <div className="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
-            {products.map((product, index) => (
-              <div
-                key={index}
-                className={`relative float-left w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none ${
-                  index === currentSlide ? '' : '-mr-[100%] hidden'
-                }`}
-                data-te-carousel-item
-                style={{ backfaceVisibility: 'hidden' }}
-              >
-                <Link to={`/product/${product._id}`}>
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-auto max-h-52 object-contain mt-4"
-                  />
-                </Link>
-              </div>
-            ))}
+            {products &&
+              products.map((product, index) => (
+                <div
+                  key={index}
+                  className={`relative float-left w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none ${
+                    index === currentSlide ? '' : '-mr-[100%] hidden'
+                  }`}
+                  data-te-carousel-item
+                  style={{ backfaceVisibility: 'hidden' }}
+                >
+                  <Link to={`/product/${product._id}`}>
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-auto max-h-52 object-contain mt-4"
+                    />
+                  </Link>
+                </div>
+              ))}
           </div>
-
-          {/* Carousel controls - prev and next buttons */}
-          {/* <button
-            className="absolute top-1/2 left-3 transform -translate-y-1/2 bg-gray-700 text-white py-2 px-4 rounded-md text-sm"
-            type="button"
-            data-te-target="#carouselExampleCaptions"
-            data-te-slide="prev"
-            onClick={handlePrevSlide}
-          >
-            Previous
-          </button>
-
-          <button
-            className="absolute top-1/2 right-3 transform -translate-y-1/2 bg-gray-700 text-white py-2 px-4 rounded-md text-sm"
-            type="button"
-            data-te-target="#carouselExampleCaptions"
-            data-te-slide="next"
-            onClick={handleNextSlide}
-          >
-            Next
-          </button> */}
         </div>
       )}
     </div>

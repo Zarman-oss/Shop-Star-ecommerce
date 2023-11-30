@@ -18,12 +18,12 @@ const Home = () => {
   return (
     <div>
       {!keyword ? (
-        <div className="mt-12">
+        <div className="mt-6">
           {/* <Message type="success" message="Featured Products" /> */}
           {/* <h1 className="text-3xl font-semibold">Featured Products</h1> */}
           <div className="bg-gray-200 py-6 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl font-bold leading-tight text-gray-900 animate-bounce">
+            <div className="max-w-7xl mx-auto text-center">
+              <h2 className="text-3xl font-bold leading-tight text-gray-900 animate-bounce ">
                 Featured Products{' '}
                 <span role="img" aria-label="fire emoji">
                   🔥
@@ -37,8 +37,11 @@ const Home = () => {
               </p>
             </div>
           </div>
+          {/* Carousel  */}
+          <div className="mt-3">
+            <ProductCarousel />
+          </div>
 
-          <ProductCarousel />
           <div className="mt-3">
             <div className="bg-gray-700 text-white py-3 px-4 text-center flex items-center justify-center">
               {/* <img
