@@ -21,7 +21,7 @@ const Home = () => {
         <div className="mt-12">
           {/* <Message type="success" message="Featured Products" /> */}
           {/* <h1 className="text-3xl font-semibold">Featured Products</h1> */}
-          {/* <div className="bg-gray-200 py-6 px-4 sm:px-6 lg:px-8">
+          <div className="bg-gray-200 py-6 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               <h2 className="text-3xl font-bold leading-tight text-gray-900 animate-bounce">
                 Featured Products{' '}
@@ -36,7 +36,7 @@ const Home = () => {
                 </span>
               </p>
             </div>
-          </div> */}
+          </div>
 
           <ProductCarousel />
           <div className="mt-3">
