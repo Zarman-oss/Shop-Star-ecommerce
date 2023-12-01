@@ -68,12 +68,12 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <HelmetProvider>
-    <Provider store={store}>
-      <React.StrictMode>
+    <React.StrictMode>
+      <Provider store={store}>
         <PayPalScriptProvider deferLoading={true}>
           <RouterProvider router={router} />
         </PayPalScriptProvider>
-      </React.StrictMode>
-    </Provider>
+      </Provider>
+    </React.StrictMode>
   </HelmetProvider>
 );

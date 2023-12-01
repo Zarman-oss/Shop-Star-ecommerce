@@ -14,6 +14,7 @@ import { FaDollarSign, FaPaypal } from 'react-icons/fa';
 
 const OrderScreen = () => {
   const { id: orderId } = useParams('');
+
   const {
     data: order,
     refetch,
@@ -43,6 +44,7 @@ const OrderScreen = () => {
             currency: 'USD',
           },
         });
+
         paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
       };
 
@@ -53,17 +55,6 @@ const OrderScreen = () => {
       }
     }
   }, [order, paypal, paypalDispatch, loadingPayPal, errorPayPal]);
-
-  const calculateTotalPrice = () => {
-    const itemsPrice = order.orderItems.reduce(
-      (acc, item) => acc + item.qty * item.price,
-      0
-    );
-    const shippingPrice = order.shippingPrice;
-    const priceTax = order.taxPrice;
-    const total = itemsPrice + shippingPrice + priceTax;
-    return total.toFixed(2);
-  };
 
   function onApprove(data, actions) {
     return actions.order.capture().then(async function (details) {
@@ -77,18 +68,21 @@ const OrderScreen = () => {
     });
   }
 
+  const calculateTotalPrice = () => {
+    const itemsPrice = order.orderItems.reduce(
+      (acc, item) => acc + item.qty * item.price,
+      0
+    );
+    const shippingPrice = order.shippingPrice;
+    const priceTax = order.taxPrice;
+    const total = itemsPrice + shippingPrice + priceTax;
+    return total.toFixed(2);
+  };
+
   async function onApproveTest() {
-    try {
-      const response = await payOrder({ orderId, details: { payer: {} } });
-      if (response.data && response.data.success) {
-        refetch();
-        toast.success('Payment successful');
-      } else {
-        toast.error('Payment failed');
-      }
-    } catch (err) {
-      toast.error(err?.data?.message || err.message);
-    }
+    await payOrder({ orderId, details: { payer: {} } });
+    refetch();
+    toast.success('Payment successful');
   }
 
   function onError(err) {
@@ -101,13 +95,17 @@ const OrderScreen = () => {
         purchase_units: [
           {
             amount: {
-              value: order.totalPrice,
+              value: calculateTotalPrice(),
+              currency_code: 'USD',
             },
           },
         ],
       })
       .then((orderId) => {
         return orderId;
+      })
+      .catch((error) => {
+        console.error('Error creating PayPal order:', error);
       });
   }
 
@@ -147,10 +145,12 @@ const OrderScreen = () => {
               <strong>Email:</strong> {order.user.email}
             </p>
             <p className="text-xl md-text-2xl lg-text-3xl mb-2">
-              <strong>Address:</strong> {order.shippingAddress.address},{' '}
+              <strong>Address: </strong> {order.shippingAddress.address},{' '}
               {order.shippingAddress.city} {order.shippingAddress.postalCode},{' '}
               {order.shippingAddress.country}
             </p>
+            {/* Delivered  */}
+
             {order.isDelivered ? (
               <Message type="success" message="Delivered" className="mt-4">
                 Delivered on {order.deliveredAt}
@@ -174,12 +174,16 @@ const OrderScreen = () => {
                 {order.paymentMethod}
               </span>
             </p>
+
+            {/* Payment Conditional */}
+
             {order.isPaid ? (
-              <Message type="success" message="Delivered">
-                Paid on {order.paidAt}
-              </Message>
+              <div>
+                <Message type="success" message="Paid" />
+                {/* Paid on {order.paidAt} */}
+              </div>
             ) : (
-              <Message type="error" message="Not Paid"></Message>
+              <Message type="error" message="Not Paid" />
             )}
           </div>
 
@@ -268,28 +272,27 @@ const OrderScreen = () => {
               </span>
             </li>
           </ul>
+          {/* Paypal Buttons Conditional */}
 
           {!order.isPaid && (
             <div>
               {loadingPay && <Loader />}
               {isPending ? (
-                <Loader />
+                (<Loader />)()
               ) : (
                 <div>
                   <button
-                    className="text-sm sm:text-base md:text-lg lg:text-xl px-2  py-2 sm:py-2 sm:px-2 md:px-3 md:py-2 lg:px-4 lg:py-2 bg-gray-300 hover:bg-gray-400 text-gray-700 font-semibold  rounded-md inline-flex items-center space-x-2 mb-2"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl px-2  py-2 sm:py-2 sm:px-2 md:px-3 md:py-2 lg:px-4 lg:py-2 bg-gray-700 hover:bg-gray-400 font-semibold text-white rounded-md inline-flex items-center space-x-2 mb-2"
                     onClick={onApproveTest}
                   >
                     Test Pay Order
                   </button>
 
-                  <div>
-                    <PayPalButtons
-                      createOrder={createOrder}
-                      onApprove={onApprove}
-                      onError={onError}
-                    ></PayPalButtons>
-                  </div>
+                  <PayPalButtons
+                    createOrder={createOrder}
+                    onApprove={onApprove}
+                    onError={onError}
+                  ></PayPalButtons>
                 </div>
               )}
             </div>
