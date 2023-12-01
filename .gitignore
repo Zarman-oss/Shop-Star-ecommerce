@@ -25,4 +25,7 @@ dist-ssr
 
 # Misc
 .env 
-.uploads
+.uploads 
+frontend/build 
+uploads/*png 
+uploads/*jpg 

@@ -24,7 +24,7 @@ const EditScreen = () => {
   const {
     data: product,
     isLoading,
-
+    refetch,
     error,
   } = useGetProductsDetailsQuery(productId);
 
@@ -35,6 +35,27 @@ const EditScreen = () => {
     useUploadProductImageMutation();
 
   const navigate = useNavigate();
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await updateProduct({
+        productId,
+        name,
+        price,
+        image,
+        brand,
+        category,
+        description,
+        countInStock,
+      }).unwrap();
+      toast.success('Product updated');
+      refetch();
+      navigate('/admin/productlist');
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
 
   useEffect(() => {
     if (product) {
@@ -48,33 +69,13 @@ const EditScreen = () => {
     }
   }, [product]);
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    const updatedProduct = {
-      productId,
-      name,
-      price,
-      image,
-      brand,
-      category,
-      countInStock,
-      description,
-    };
-    const result = await updateProduct(updatedProduct);
-    if (result.error) {
-      toast.error(result.error);
-    } else {
-      toast.success('Product updated');
-      navigate('/admin/productlist');
-    }
-  };
-
   const uploadFileHandler = async (e) => {
     const formData = new FormData();
     formData.append('image', e.target.files[0]);
     try {
       const res = await uploadProductImage(formData).unwrap();
       toast.success(res.message);
+      setImage(res.image);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -159,6 +160,7 @@ const EditScreen = () => {
                 onChange={uploadFileHandler}
                 className=" py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
               />
+              {loadingUpload && <Loader />}
             </div>
             {/* brand */}
             <div className="mb-4">
