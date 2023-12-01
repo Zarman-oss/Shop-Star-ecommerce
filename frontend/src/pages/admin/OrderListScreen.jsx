@@ -64,7 +64,7 @@ const OrderListScreen = () => {
                     )}
                   </td>
 
-                  <td>
+                  <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center">
                     {order.isPaid ? (
                       order.paidAt.substring(0, 10)
                     ) : (
@@ -74,9 +74,9 @@ const OrderListScreen = () => {
                       />
                     )}
                   </td>
-                  <td>
-                    {order.Delivered ? (
-                      order.paidAt.substring(0, 10)
+                  <td className="text-sm md:text-base lg:text-lg xl:text-xl text-center">
+                    {order.isDelivered ? (
+                      order.deliveredAt.substring(0, 10)
                     ) : (
                       <FaTimes
                         className="mx-auto"

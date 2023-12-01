@@ -1,8 +1,13 @@
 const Loader = () => {
   return (
-    <div className="flex items-center justify-center">
-      <div className="w-12 h-12 border-t-4 border-b-4 border-blue-500 rounded-full animate-spin"></div>
-      <span className="sr-only">Loading...</span>
+    <div className="h-screen bg-white">
+      <div className="flex justify-center items-center ">
+        <img
+          className="h-16 w-16"
+          src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
+          alt=""
+        />
+      </div>
     </div>
   );
 };

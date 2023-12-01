@@ -6,6 +6,7 @@ import {
   useGetOrdersDetailsQuery,
   usePayOrderMutation,
   useGetPayPalClientIdQuery,
+  useDeliverOrderMutation,
 } from '../slices/ordersApiSlice';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { toast } from 'react-toastify';
@@ -23,6 +24,9 @@ const OrderScreen = () => {
   } = useGetOrdersDetailsQuery(orderId);
 
   const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation();
+
+  const [deliverOrder, { isLoading: loadingDeliver }] =
+    useDeliverOrderMutation();
 
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
@@ -108,6 +112,16 @@ const OrderScreen = () => {
         console.error('Error creating PayPal order:', error);
       });
   }
+
+  const deliverOrderHandler = async () => {
+    try {
+      await deliverOrder(orderId);
+      refetch();
+      toast.success('Order Delivered');
+    } catch (err) {
+      toast.error(err?.data?.message || err.message);
+    }
+  };
 
   return isLoading ? (
     <Loader />
@@ -298,6 +312,22 @@ const OrderScreen = () => {
             </div>
           )}
           {/* Mark as delivered placeholder  */}
+          {loadingDeliver && <Loader />}
+
+          {userInfo &&
+            userInfo.isAdmin &&
+            order.isPaid &&
+            !order.isDelivered && (
+              <div>
+                <button
+                  onClick={deliverOrderHandler}
+                  type="submit"
+                  className="bg-gray-700 hover:bg-gray-500 text-white mt-3 font-semibold py-3 px-4 rounded transition duration-300 ease-in-out text-xs"
+                >
+                  Mark As Delivered{' '}
+                </button>
+              </div>
+            )}
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@ function checkFileType(file, cb) {
     if (extname && mimetype) {
         return cb(null, true);
     } else {
-        return cb('Invalid file type. Allowed file types: JPG, JPEG, PNG');
+        cb('Upload Images Only');
     }
 }
 
