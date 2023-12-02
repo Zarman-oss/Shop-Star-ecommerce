@@ -23,9 +23,18 @@ dist-ssr
 *.sln
 *.sw?
 
-# Misc
+# Misc 
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 .env 
-.uploads 
-frontend/build 
+.uploads  
+npm-debug.log*
+frontend/dist
 uploads/*png 
 uploads/*jpg 
+  
+http  

@@ -48,8 +48,8 @@ const EditScreen = () => {
         category,
         description,
         countInStock,
-      }).unwrap();
-      toast.success('Product updated');
+      });
+      toast.success('product updated successfully');
       refetch();
       navigate('/admin/productlist');
     } catch (err) {
@@ -140,7 +140,7 @@ const EditScreen = () => {
             {/* Image Upload*/}
             <div className="mb-4">
               <label
-                htmlFor="email"
+                htmlFor="image"
                 className="block text-sm font-medium text-gray-700"
               >
                 <h2 className="text-2xl">Upload Image </h2>
@@ -154,9 +154,8 @@ const EditScreen = () => {
                 className="border rounded-md py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
               />
               <input
-                id="name"
+                id="nameInput"
                 type="file"
-                label="Choose File"
                 onChange={uploadFileHandler}
                 className=" py-2 px-3 mt-1 w-full placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm"
               />
