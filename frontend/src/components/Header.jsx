@@ -3,7 +3,7 @@ import { FaUser, FaShoppingCart, FaUserCircle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
-import Image from '../assets/images/Logo-new.png';
+import Image from '../assets/images/Logo-new2.png';
 import { useSelector, useDispatch } from 'react-redux';
 import SearchBox from './SearchBox';
 // import { reset } from 'nodemon';

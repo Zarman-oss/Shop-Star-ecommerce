@@ -8,17 +8,17 @@ const ProductCarousel = () => {
   const { data: products, isLoading, error } = useGetTopProductsQuery();
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const handlePrevSlide = () => {
-    setCurrentSlide((prevSlide) =>
-      prevSlide === 0 ? products.length - 1 : prevSlide - 1
-    );
-  };
+  // const handlePrevSlide = () => {
+  //   setCurrentSlide((prevSlide) =>
+  //     prevSlide === 0 ? products.length - 1 : prevSlide - 1
+  //   );
+  // };
 
-  const handleNextSlide = () => {
-    setCurrentSlide((prevSlide) =>
-      prevSlide === products.length - 1 ? 0 : prevSlide + 1
-    );
-  };
+  // const handleNextSlide = () => {
+  //   setCurrentSlide((prevSlide) =>
+  //     prevSlide === products.length - 1 ? 0 : prevSlide + 1
+  //   );
+  // };
 
   useEffect(() => {
     if (products && products.length > 0) {
