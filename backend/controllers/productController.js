@@ -50,7 +50,7 @@ const createProduct = asyncHandler(async (req, res) => {
         name: 'Sample name',
         price: 0,
         user: req.user._id,
-        image: '/images/Patriots logo.webp',
+        image: '/images/sample.jpg',
         brand: 'Sample Brand',
         category: 'Sample category',
         countInStock: 0,
@@ -83,7 +83,6 @@ const updateProduct = asyncHandler(async (req, res) => {
 
         const updatedProduct = await product.save();
         res.json(updatedProduct);
-
     } else {
         res.status(404);
         throw new Error('Resource not found');

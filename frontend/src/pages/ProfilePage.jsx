@@ -196,7 +196,7 @@ const ProfilePage = () => {
                         />
                       )}
                     </td>
-                    <td className="md:text-lg lg:text-xl xl:text-2xl text-center ">
+                    <td className="md:text-lg lg:text-xl xl:text-2xl text-center">
                       {order.isDelivered ? (
                         order.deliverAt.substring(0, 10)
                       ) : (

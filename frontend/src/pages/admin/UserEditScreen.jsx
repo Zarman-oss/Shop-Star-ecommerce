@@ -61,6 +61,7 @@ const UserEditScreen = () => {
         <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl  font-semibold mb-6 text-center">
           Edit User
         </h1>
+        {loadingUpdate && <Loader />}
 
         {isLoading ? (
           <Loader />

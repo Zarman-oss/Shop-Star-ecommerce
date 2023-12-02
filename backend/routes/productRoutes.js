@@ -12,7 +12,8 @@ router.route('/:id/reviews')
  
 router.get('/top', getTopProducts);
 
-router.route('/:id')
+router 
+.route('/:id')
 .get(getProductById)
 .put(protect, admin, updateProduct)
 .delete(protect, admin, deleteProduct);
