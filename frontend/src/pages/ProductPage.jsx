@@ -84,7 +84,7 @@ const ProductPage = () => {
       ) : (
         <>
           <Meta title={product.name} />
-          <div className=" p-4 mt-6">
+          <div className=" p-4 mt-3">
             <div className="max-w-screen-md mx-auto mt-8 ">
               <div className="md:flex ">
                 {/* Product Image */}

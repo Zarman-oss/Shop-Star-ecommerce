@@ -6,6 +6,7 @@ import Loader from '../components/Loader';
 import { useLoginMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import { toast } from 'react-toastify';
+import { FaUser } from 'react-icons/fa';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -55,7 +56,10 @@ const LoginScreen = () => {
 
   return (
     <FormContainer>
-      <h1 className="text-4xl font-semibold mb-6 text-center">Sign In</h1>
+      <h1 className="text-4xl font-semibold mb-6 text-center flex items-center justify-center">
+        Sign In
+        <FaUser className="ml-2" />
+      </h1>
       <form onSubmit={submitHandler}>
         <div className="mb-4">
           <label

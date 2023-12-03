@@ -6,6 +6,7 @@ import Loader from '../components/Loader';
 import { useRegisterMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import { toast } from 'react-toastify';
+import { FaUser } from 'react-icons/fa';
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('');
@@ -51,8 +52,9 @@ const RegisterPage = () => {
 
   return (
     <FormContainer>
-      <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl  font-semibold mb-6 text-center">
-        Register Page
+      <h1 className="text-4xl font-semibold mb-6 text-center flex items-center justify-center">
+        Register New User
+        <FaUser className="ml-2" />
       </h1>
       <form onSubmit={submitHandler}>
         {/* name  */}
