@@ -36,7 +36,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-gray-900 text-white py-2 px-3 relative">
+    <header className="bg-gray-900 text-white py-0 px-3 sticky top-0 z-10">
       <div className="container mx-auto flex justify-between items-center py-2">
         <Link to="/" className="text-2xl">
           <img
