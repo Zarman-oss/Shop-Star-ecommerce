@@ -15,7 +15,11 @@ const Rating = ({ value, text }) => {
           )}
         </div>
       ))}
-      {text && <span className="ml-2">{text} reviews</span>}
+      {text && (
+        <span className="ml-2">
+          {text} {text !== '1' ? 'reviews' : 'review'}
+        </span>
+      )}
     </div>
   );
 };

@@ -7,21 +7,12 @@ import Loader from './Loader';
 const ProductCarousel = () => {
   const { data: products, isLoading, error } = useGetTopProductsQuery();
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  // const handlePrevSlide = () => {
-  //   setCurrentSlide((prevSlide) =>
-  //     prevSlide === 0 ? products.length - 1 : prevSlide - 1
-  //   );
-  // };
-
-  // const handleNextSlide = () => {
-  //   setCurrentSlide((prevSlide) =>
-  //     prevSlide === products.length - 1 ? 0 : prevSlide + 1
-  //   );
-  // };
+  const [slides, setSlides] = useState([]);
 
   useEffect(() => {
     if (products && products.length > 0) {
+      setSlides([...products]); // Set each product as an individual slide
+
       const interval = setInterval(() => {
         setCurrentSlide((prevSlide) =>
           prevSlide === products.length - 1 ? 0 : prevSlide + 1
@@ -49,8 +40,8 @@ const ProductCarousel = () => {
         >
           {/* Carousel items */}
           <div className="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
-            {products &&
-              products.map((product, index) => (
+            {slides &&
+              slides.map((product, index) => (
                 <div
                   key={index}
                   className={`relative float-left w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none ${
