@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { FaUser, FaShoppingCart, FaUserCircle } from 'react-icons/fa';
+import { FaUser, FaShoppingCart, FaUserCircle, FaBars } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
 import Image from '../assets/images/Logo-new2.png';
 import { useSelector, useDispatch } from 'react-redux';
 import SearchBox from './SearchBox';
-// import { reset } from 'nodemon';
 import { resetCart } from '../slices/cartSlice';
 
 const Header = () => {
@@ -172,12 +171,14 @@ const Header = () => {
         <div className="md:hidden flex items-center">
           <button
             onClick={toggleMenu}
-            className="lg:hidden ml-auto text-2xl leading-none focus:outline-none"
+            className="lg:hidden ml-auto text-2xl leading-none focus:outline-none "
             type="button"
             data-toggle="collapse"
             data-target="#navbarNav"
           >
-            &#9776;
+            <div>
+              <FaBars className="text-gray-500 focus:text-white hover:text-white focus:outline-none" />
+            </div>
           </button>
         </div>
       </div>

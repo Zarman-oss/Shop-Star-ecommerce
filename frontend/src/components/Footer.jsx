@@ -28,8 +28,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto py-8 px-4 sm:px-6 lg:px=8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container max-w-6xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row gap-8">
           {/* Logo and About section */}
           <div className="flex flex-col items-center md:items-start">
             <Link to="/" className="text-2xl font-bold mb-4">
@@ -58,7 +58,7 @@ const Footer = () => {
             <div className="fixed bottom-4 right-4">
               <button
                 onClick={scrollToTop}
-                className="bg-gray-800 text-white px-4 py-2 rounded-full hover:bg-gray-700 focus:outline-none"
+                className="bg-gray-900 text-white px-2 py-2 rounded-xl hover:bg-gray-400 focus:outline-none"
               >
                 <FaArrowUp className="text-lg" />
               </button>
@@ -81,7 +81,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-col items-center md:items-start">
+          {/* <div className="flex flex-col items-center md:items-start">
             <h3 className="font-semibold mb-4">Contact</h3>
             <p className="text-sm text-center md:text-left">
               123 Street Name, City, Country
@@ -89,7 +89,7 @@ const Footer = () => {
             <p className="text-sm text-center md:text-left">
               info@shopstar.com
             </p>
-          </div>
+          </div> */}
 
           {/* Newsletter */}
           <div className="flex flex-col items-center md:items-start">
