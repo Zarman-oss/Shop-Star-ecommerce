@@ -3,7 +3,7 @@ import { FaUser, FaShoppingCart, FaUserCircle, FaBars } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../slices/usersApiSlice';
 import { logout } from '../slices/authSlice';
-import Image from '../assets/images/Logo-new2.png';
+import Image from '../assets/images/shop.png';
 import { useSelector, useDispatch } from 'react-redux';
 import SearchBox from './SearchBox';
 import { resetCart } from '../slices/cartSlice';
@@ -41,7 +41,7 @@ const Header = () => {
           <img
             src={Image}
             alt="Shop Star"
-            className="w-auto h-12 md:h-16 lg:h-20"
+            className="w-full h-20 sm:h-24 md:h-24 lg:h-24 "
           />
         </Link>
 
