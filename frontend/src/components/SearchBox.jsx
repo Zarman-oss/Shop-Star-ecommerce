@@ -1,5 +1,6 @@
-import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const SearchBox = () => {
   const navigate = useNavigate();
@@ -17,23 +18,22 @@ const SearchBox = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={submitHandler} className="md:flex items-center">
-        <div className=" flex">
+    <div className="md:flex items-center">
+      <form onSubmit={submitHandler} className="flex w-full">
+        <div className="flex items-center w-full bg-gray-800 rounded-md overflow-hidden">
           <input
             placeholder="Search products"
             name="q"
             type="text"
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
-            className="border rounded-md py-1 px-2 placeholder-gray-400 focus:outline-none focus:ring focus:border-blue-300 text-sm text-black w-full"
+            className="w-full py-2 px-4 text-white bg-transparent focus:outline-none"
           />
-          {/* Button */}
           <button
             type="submit"
-            className="bg-gray-700 hover:bg-gray-500 text-white font-semibold py-2 px-4 ml-2 rounded transition duration-300 ease-in-out text-xs"
+            className="bg-gray-600 text-white hover:bg-gray-700 focus:outline-none px-3 py-2"
           >
-            Search
+            <FaSearch />
           </button>
         </div>
       </form>

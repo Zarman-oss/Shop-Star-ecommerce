@@ -46,10 +46,11 @@ const Header = () => {
         </Link>
 
         {/* Navbar-right side */}
-        <div className="hidden md:flex ms-auto items-center gap-3">
+        <div className="hidden md:flex ms-auto items-center gap-3"> 
+      
           <div className="flex ">
             <SearchBox />
-          </div>
+          </div> 
 
           <Link
             to="/cart"
