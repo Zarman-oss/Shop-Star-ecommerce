@@ -9,12 +9,7 @@ export default defineConfig({
 
   plugins: [react(),],
 
-  // server: {
-  //   proxy: {
-  //     '/api': 'http://backend-server-domain-or-ip:backend-port',
-  //     '/uploads': 'http://backend-server-domain-or-ip:backend-port',
-  //   },
-  // },
+
 
   server: {
     proxy: {
@@ -22,5 +17,5 @@ export default defineConfig({
       '/uploads': 'http://localhost:5000',
     },
   },
-  // base: '/'
+ 
 }); 
