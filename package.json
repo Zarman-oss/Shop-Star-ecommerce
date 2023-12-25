@@ -11,9 +11,8 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend && echo 'Build complete!'"
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend "
   },
-  
   "author": "Zarman",
   "license": "MIT",
   "dependencies": {
