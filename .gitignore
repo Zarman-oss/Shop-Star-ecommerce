@@ -37,4 +37,3 @@ frontend/dist
 uploads/*png 
 uploads/*jpg 
 http  
-vercel.json
