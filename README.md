@@ -24,7 +24,7 @@ This project is an e-commerce website where users can browse and purchase produc
 - **Vite:** A fast build tool and development environment for modern web apps.
 - **Tailwind CSS:** A utility-first CSS framework for styling.
 - **Redux:** A state management library for managing application state.
-- **Redux Thunk:** Middleware for handling asynchronous actions in Redux.
+- **Redux Thunk:** Middleware for handling asynchronous actions in Redux..
 - **JWT (JSON Web Tokens):** For secure user authentication.
 - **Bcrypt:** A library for hashing user passwords securely.
 
