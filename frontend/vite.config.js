@@ -10,13 +10,13 @@ export default defineConfig({
 
   server: {
     proxy: {
-      '/api': 'https://shop-star-ecommerce.vercel.app/',
-      '/uploads': 'https://shop-star-ecommerce.vercel.app/',
+      '/api': 'https://shop-star-ecommerce.vercel.app',
+      '/uploads': 'https://shop-star-ecommerce.vercel.app',
     },
   },
 
   build: {
-    outDir: 'dist', // Specify the correct output directory path
+    outDir: 'frontend/dist', // Specify the correct output directory path
     assetsDir: 'assets', // Relative path to the root of your project
     manifest: true,
   },
