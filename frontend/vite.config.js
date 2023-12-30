@@ -10,7 +10,7 @@ export default defineConfig({
 
   server: {
     proxy: {
-      '/api': 'http://localhost:5000',
+      '/api': 'https://shop-star-ecommerce.vercel.app/',
       '/uploads': 'http://localhost:5000',
     },
   },
