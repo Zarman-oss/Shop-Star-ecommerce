@@ -16,7 +16,7 @@ export default defineConfig({
   },
 
   build: {
-    outDir: 'frontend/dist', // Specify the correct output directory path
+    outDir: 'dist', // Specify the correct output directory path
     assetsDir: 'assets', // Relative path to the root of your project
     manifest: true,
   },
