@@ -1,7 +1,3 @@
 {
-    "rewrites": [{ "source": "/api/(.*)", "destination": "https://shop-star-ecommerce.vercel.app" }]
-  } 
-
-
-
-  
+  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
+  }
