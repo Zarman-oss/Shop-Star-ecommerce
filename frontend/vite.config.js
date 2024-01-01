@@ -8,7 +8,19 @@ export default defineConfig({
     imagetools(),
   ],
 
- 
+  server: {
+    proxy: {
+
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true
+      },
+      '/uploads': {
+        target: 'http://localhost:5000',
+        changeOrigin: true
+      }
+    },
+  },
 
   build: {
     outDir: 'dist', // Specify the correct output directory path
