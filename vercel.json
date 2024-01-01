@@ -1,17 +1,7 @@
 {
-    "rewrites": [
-      { "source": "/api/(.*)", "destination": "/api/$1" },
-      { "source": "/(.*)", "destination": "/index.js" }
-    ],
-    
-    "builds": [
-      { "src": "frontend", "use": "@now/static-build", "config": { "distDir": "dist" } },
-      { "src": "backend", "use": "@now/node" }
-    ],
-  
-    "routes": [
-      { "src": "/api/(.*)", "dest": "/api/$1" },
-      { "src": "/(.*)", "dest": "/index.html" }
-    ]
-  }
+    "rewrites": [{ "source": "/api/(.*)", "destination": "https://shop-star-ecommerce.vercel.app" }]
+  } 
+
+
+
   
