@@ -1,6 +1,11 @@
 # E-Commerce Shop Star
 
-Welcome to the E-Commerce Shop Site repository! This is a full-stack web application built using the MERN (MongoDB, Express, React, Node.js) stack, along with Vite for fast development and Tailwind CSS for styling. This repository contains the source code for the entire project.
+Welcome to the E-Commerce Shop Site repository! This is a full-stack web application built using the MERN (MongoDB, Express, React, Node.js) stack, along with Vite for fast development and Tailwind CSS for styling. This repository contains the source code for the entire project. 
+
+# Demo 
+
+https://shop-star-ecommerce.vercel.app/ 
+PS: might not work atm.
 
 ## About
 
