@@ -12,11 +12,11 @@ export default defineConfig({
     proxy: {
 
       '/api': {
-        target: 'https://shop-star-ecommerce.vercel.app/',
+        target: 'http://localhost:5000',
         changeOrigin: true
       },
       '/uploads': {
-        target: 'https://shop-star-ecommerce.vercel.app/',
+        target: 'http://localhost:5000',
         changeOrigin: true
       }
     },
