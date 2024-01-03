@@ -25,6 +25,6 @@ export default defineConfig({
   build: {
     outDir: 'dist', // Specify the correct output directory path
     assetsDir: 'assets', // Relative path to the root of your project
-    manifest: true,
+  
   },
 });
